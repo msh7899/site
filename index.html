@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Byte Box | محصول هوشمند مدیریت فلش مموری — eleXify</title>
+
+  <meta name="description" content="Byte Box محصول شرکت eleXify برای مدیریت هوشمند و امن فلش مموری بدون نیاز به اینترنت. اتصال مستقیم، رابط وب پیشرفته و پشتیبانی از چند کاربر.">
+  <meta name="keywords" content="Byte Box, ByteBox, bytrbox, eleXify, elexify, مدیریت فلش مموری, فلش وایرلس">
+  <meta name="author" content="eleXify">
+  <meta name="robots" content="index, follow">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Byte Box",
+    "brand": {
+      "@type": "Brand",
+      "name": "eleXify"
+    },
+    "description": "Byte Box محصول شرکت eleXify برای مدیریت فلش مموری بدون اینترنت",
+    "category": "Electronics"
+  }
+  </script>
+
+  <!-- فونت فارسی -->
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    .logo {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      font-family: 'Segoe Print', cursive;
+      font-size: 1.8rem;
+      color: var(--primary);
+      background: rgba(15, 23, 42, 0.9); /* پس‌زمینه نیمه شفاف */
+      text-align: center; /* متن وسط چین */
+      padding: 12px 0;
+      z-index: 9999;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    :root {
+      --bg: #0f172a;
+      --card: #111827;
+      --primary: #38bdf8;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Vazirmatn', sans-serif; }
+    body { padding-bottom: 60px; background: linear-gradient(180deg, #020617, var(--bg)); color: var(--text); line-height: 1.9; }
+    a { color: inherit; text-decoration: none; }
+  .site-notice {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+    color: #020617;
+    padding: 16px 20px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 15px 40px rgba(56,189,248,0.35);
+    z-index: 9999;
+    animation: slideIn 0.6s ease;
+    max-width: 420px;
+    font-weight: 600;
+  }
+
+  .site-notice button {
+      background: none;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+      color: #020617;
+      line-height: 1;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .site-notice {
+        right: 10px;
+        left: 10px;
+        top: 10px;
+        max-width: unset;
+      }
+    }
+
+    header { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 40px 20px; }
+    .hero { max-width: 1100px; width: 100%; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center; animation: fadeUp 1s ease; }
+    .hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 20px; }
+    .hero p { color: var(--muted); margin-bottom: 30px; }
+    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn { padding: 14px 28px; border-radius: var(--radius); font-weight: 600; transition: 0.3s; cursor: pointer; }
+    .btn-primary { background: var(--primary); color: #020617; }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(56,189,248,0.3); }
+    .btn-outline { border: 1px solid #334155; }
+    .btn-outline:hover { background: #020617; }
+
+    .hero-image { background: #020617; border-radius: var(--radius); height: 380px; display: flex; align-items: center; justify-content: center; color: var(--muted); border: 1px dashed #334155; }
+    .hero-image img { width:100%; height:100%; object-fit: cover; border-radius: var(--radius); }
+
+    section { padding: 100px 20px; }
+    .container { max-width: 1100px; margin: auto; }
+    .section-title { text-align: center; margin-bottom: 60px; animation: fadeUp 1s ease; }
+    .section-title h2 { font-size: 2.2rem; margin-bottom: 10px; }
+    .section-title p { color: var(--muted); }
+
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; }
+    .feature { background: var(--card); padding: 30px; border-radius: var(--radius); border: 1px solid #1f2933; transition: 0.4s; }
+    .feature:hover { transform: translateY(-6px); border-color: var(--primary); }
+    .feature h3 { margin-bottom: 10px; }
+    .feature p { color: var(--muted); }
+
+    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+    .gallery-item {
+      height: 380px;
+      border-radius: var(--radius);
+      border: 1px dashed #334155;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      background: #020617;
+    }
+    /* گالری محصول */
+    .gallery.product-gallery .gallery-item {
+      aspect-ratio: 1 / 1;
+      height: auto;
+    }
+
+    .gallery.product-gallery .gallery-item img {
+      object-fit: contain;
+      background: #020617;
+    }
+    .product-swiper {
+      width: 100%;
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px 0;
+    }
+
+    .product-swiper .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: var(--radius);
+      background: #020617;
+    }
+
+    .product-swiper img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: var(--radius);
+    }
+
+    .contact { margin-top: 40px; text-align: center; }
+    .contact-info p { color: var(--muted); margin-bottom: 10px; }
+
+    footer { padding: 40px 20px; text-align: center; color: var(--muted); border-top: 1px solid #1f2933; }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+    @media (max-width: 768px) {
+      .gallery-item {
+        aspect-ratio: 1 / 1;
+      }
+      .hero { grid-template-columns: 1fr; text-align: center; }
+      .hero-buttons { justify-content: center; }
+      /* کارت‌های مراحل */
+      #how-to-use .feature {
+        padding: 22px;
+      }
+
+      /* شماره مرحله */
+      .step-badge {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+      }
+
+      /* عنوان مرحله */
+      #how-to-use h3 {
+        font-size: 1.1rem;
+      }
+
+      /* توضیح مرحله */
+      #how-to-use p {
+        font-size: 0.95rem;
+      }
+
+      /* تصویر مراحل */
+      #how-to-use .gallery-item {
+        aspect-ratio: 16 / 9;
+        height: auto;
+      }
+
+      #how-to-use .gallery-item img {
+        object-fit: contain;
+        background: #020617;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-notice" id="siteNotice">
+    <span>⚠️ توجه: سایت در حال بروزرسانی است. ممکن است برخی بخش‌ها موقتاً در دسترس نباشند.</span>
+    <button onclick="closeNotice()">×</button>
+  </div>
+
+  <!-- هدر / معرفی اصلی -->
+  <header>
+    <div class="hero">
+      <div class="logo">
+        eleXify co
+      </div>
+      <div>
+        <h1>Byte Box</h1>
+        <p> اولین محصول شرکت eleXify که به شما این امکان را میدهد اطلاعات فلش مموری خود را به صورت ایمن و سریع مدیریت کنید و یا با دیگران به اشتراک بگذارید</p>
+        <div class="hero-buttons">
+          <a href="#features" class="btn btn-primary">مشاهده ویژگی‌ها</a>
+          <a href="#how-to-use" class="btn btn-outline">نحوه استفاده</a>
+          <a href="#contact" class="btn btn-outline">تماس با ما</a>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <img src="images/byte-box-elexify.png" alt="محصول اصلی Byte Box">
+      </div>
+    </div>
+  </header>
+
+  <!-- ویژگی‌ها -->
+  <section id="features">
+    <div class="container">
+      <div class="section-title">
+        <h2>ویژگی‌های Byte Box</h2>
+        </div>
+
+      <div class="features">
+        <div class="feature">
+          <h3>مدیریت تمام فرمت‌ها</h3>
+          <p>پشتیبانی از انواع فلش مموری با فرمت‌های مختلف و امکان مدیریت فایل‌ها بدون محدودیت.</p>
+        </div>
+        <div class="feature">
+          <h3>هات اسپات داخلی</h3>
+          <p>اتصال مستقیم به Byte Box از طریق هات اسپات داخلی، بدون نیاز به اینترنت یا شبکه خارجی.</p>
+        </div>
+        <div class="feature">
+          <h3>رابط وب پیشرفته</h3>
+          <p>صفحه وب اختصاصی که به راحتی می‌توانید به تمام فایل‌ها دسترسی داشته باشید و عملیات دانلود، آپلود، حذف و تغییر نام فایل‌ها را انجام دهید.</p>
+        </div>
+        <div class="feature">
+          <h3>شخصی‌سازی نام هات اسپات</h3>
+          <p>امکان تغییر نام هات اسپات به دلخواه، برای شناسایی سریع‌تر دستگاه در میان چندین شبکه.</p>
+        </div>
+        <div class="feature">
+          <h3>عملیات فایل بدون اینترنت</h3>
+          <p>تمام عملیات مدیریت فایل‌ها از جمله دانلود، آپلود، تغییر نام و حذف بدون نیاز به اتصال اینترنت انجام می‌شود.</p>
+        </div>
+        <div class="feature">
+          <h3>امکان استفاده همزمان چندین کاربر</h3>
+            <P>این امکان وجود دارد که همزمان چندین کاربر به دستگاه متصل شده و فایل های موجود در مموری را کنترل کنند . همچنین تعداد افراد متصل شده در بخش تنظیمات قابل مشاهده است</P>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- نحوه استفاده از Byte Box -->
+  <section id="how-to-use">
+    <div class="container">
+      <div class="section-title">
+        <h2>نحوه استفاده از Byte Box</h2>
+        <p>مراحل استفاده از دستگاه Byte Box به صورت ساده و قدم‌به‌قدم</p>
+      </div>
+
+      <div class="features">
+        
+        <!-- مرحله 1 -->
+        <div class="feature">
+          <h3>مرحله ۱: اتصال دستگاه</h3>
+          <p>
+            در این مرحله دستگاه Byte Box را به منبع تغذیه 5 ولت حد اقل 2 آمپر متصل کنید و منتظر بمانید تا روشن شود.
+          </p>
+          <div class="gallery-item" style="margin-top:15px;">
+            <img src="images/step1.png" alt="مرحله اول استفاده از Byte Box">
+          </div>
+        </div>
+
+        <!-- مرحله 2 -->
+        <div class="feature">
+          <h3>مرحله ۲: اتصال به هات‌اسپات</h3>
+          <p>
+            به هات‌اسپات داخلی Byte Box متصل شوید. نام و رمز عبور در دفترچه همراه دستگاه موجود می باشد که بعدا در بخش تنظیمات دستگاه می‌توانید نام و رمز عبور را دهید.
+          </p>
+          <div class="gallery-item" style="margin-top:15px;">
+            <img src="images/step1.png" alt="اتصال به هات اسپات Byte Box">
+          </div>
+        </div>
+
+        <!-- مرحله 3 -->
+        <div class="feature">
+          <h3>مرحله ۳: ورود به پنل وب</h3>
+          <p>
+            با وارد کردن آدرس مشخص‌شده در دفترچه راهنما محصول، وارد رابط وب Byte Box شوید و فایل‌ها را مدیریت کنید.
+          </p>
+          <div class="gallery-item" style="margin-top:15px;">
+            <img src="images/step1.png" alt="رابط وب Byte Box">
+          </div>
+        </div>
+
+        <!-- مرحله 4 -->
+        <div class="feature">
+          <h3>مرحله ۴: مدیریت فایل‌ها</h3>
+          <p>
+            عملیات دانلود، آپلود، حذف و تغییر نام فایل‌ها را به‌راحتی و بدون اینترنت انجام دهید.
+          </p>
+          <div class="gallery-item" style="margin-top:15px;">
+            <img src="images/step1.png" alt="مدیریت فایل‌ها در Byte Box">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+  <!-- گالری -->
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>گالری محصول</h2>
+        
+      </div>
+
+      <!-- اسلایدر Swiper -->
+      <div class="swiper product-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="images/byte-box-elexify.png" alt="Byte Box ۱"></div>
+          <div class="swiper-slide"><img src="images/byte-box-elexify.png" alt="Byte Box ۲"></div>
+          <div class="swiper-slide"><img src="images/byte-box-elexify.png" alt="Byte Box ۳"></div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+
+        <!-- Pagination -->
+        <div class="swiper-pagination"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- تماس با ما -->
+  <section id="contact">
+  <div class="container contact" dir="ltr" lang="en">
+    <div class="section-title">
+      <h2> :تماس با ما </h2>
+      <p>📧 Email: eleXify.co@gmail.com</p>
+      <p>📸 Instagram: <a href="https://www.instagram.com/eleXify.co" target="_blank">@eleXify</a></p>
+      <p>💬 Telegram: <a href="https://t.me/eleXify" target="_blank">@eleXify</a></p>
+    </div>
+  </div>
+</section>
+
+
+<div style="display:none">
+Byte Box by eleXify – ByteBox – bytrbox – محصول مدیریت فلش مموری شرکت eleXify
+</div>
+
+  <!-- فوتر -->
+  <footer style="padding: 40px 20px; text-align: center; color: #9ca3af; border-top: 1px solid #1f2933; font-family: 'Segoe UI', sans-serif; font-size: 0.95rem; direction: ltr;">
+    © 2025 eleXify. All rights reserved. <br>
+    Designed & Developed by eleXify Team
+  </footer>
+
+
+
+  <script>
+    function closeNotice() {
+      document.getElementById('siteNotice').style.display = 'none';
+    }
+</script>
+<!-- Swiper CSS -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+/>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script>
+  const swiper = new Swiper('.product-swiper', {
+    loop: true,
+    spaceBetween: 20,
+    slidesPerView: 1,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+      640: {
+        slidesPerView: 1,
+      },
+      768: {
+        slidesPerView: 2,
+      },
+      1024: {
+        slidesPerView: 3,
+      },
+    },
+  });
+</script>
+
+</body>
+</html>

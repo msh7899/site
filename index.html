@@ -1,451 +1,1549 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>رهپویان فناوری آمارد | eleXify</title>
+<meta name="description" content="طراحی و توسعه راهکارها و محصولات الکترونیکی توسط eleXify برای حل مسائل واقعی و تبدیل ایده به نمونه اولیه و محصول." />
 
-  <title>Byte Box | محصول هوشمند مدیریت فلش مموری — eleXify</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
-  <meta name="description" content="Byte Box محصول شرکت eleXify برای مدیریت هوشمند و امن فلش مموری بدون نیاز به اینترنت. اتصال مستقیم، رابط وب پیشرفته و پشتیبانی از چند کاربر.">
-  <meta name="keywords" content="Byte Box, ByteBox, bytrbox, eleXify, elexify, مدیریت فلش مموری, فلش وایرلس">
-  <meta name="author" content="eleXify">
-  <meta name="robots" content="index, follow">
+<style>
+/* ===================================================
+   1) متغیرها و پایه
+   =================================================== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "Byte Box",
-    "brand": {
-      "@type": "Brand",
-      "name": "eleXify"
-    },
-    "description": "Byte Box محصول شرکت eleXify برای مدیریت فلش مموری بدون اینترنت",
-    "category": "Electronics"
-  }
-  </script>
+:root{
+  --bg:#ffffff;
+  --surface:#f7f8fa;
+  --surface-2:#eff2f6;
+  --text:#0d1117;
+  --muted:#6b7280;
+  --border:#e6e9ee;
+  --accent:#2563eb;
+  --accent-dark:#1d4ed8;
+  --accent-soft:rgba(37,99,235,.08);
+  --radius:18px;
+  --maxw:1180px;
+  --shadow:0 24px 48px -28px rgba(13,17,23,.22);
+}
 
-  <!-- فونت فارسی -->
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;800&display=swap" rel="stylesheet">
+html{scroll-behavior:smooth;scroll-padding-top:100px}
 
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-    .logo {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      font-family: 'Segoe Print', cursive;
-      font-size: 1.8rem;
-      color: var(--primary);
-      background: rgba(15, 23, 42, 0.9); /* پس‌زمینه نیمه شفاف */
-      text-align: center; /* متن وسط چین */
-      padding: 12px 0;
-      z-index: 9999;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    }
+body{
+  font-family:'Vazirmatn',system-ui,-apple-system,'Segoe UI',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.85;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
 
-    :root {
-      --bg: #0f172a;
-      --card: #111827;
-      --primary: #38bdf8;
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --radius: 18px;
-    }
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input,textarea{font-family:inherit;font-size:inherit}
+button{cursor:pointer;border:none;background:none;color:inherit}
+ul{list-style:none}
 
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Vazirmatn', sans-serif; }
-    body { padding-bottom: 60px; background: linear-gradient(180deg, #020617, var(--bg)); color: var(--text); line-height: 1.9; }
-    a { color: inherit; text-decoration: none; }
-  .site-notice {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: linear-gradient(135deg, #38bdf8, #0ea5e9);
-    color: #020617;
-    padding: 16px 20px;
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    box-shadow: 0 15px 40px rgba(56,189,248,0.35);
-    z-index: 9999;
-    animation: slideIn 0.6s ease;
-    max-width: 420px;
-    font-weight: 600;
-  }
+.container{max-width:var(--maxw);margin:0 auto;padding:0 24px}
 
-  .site-notice button {
-      background: none;
-      border: none;
-      font-size: 22px;
-      cursor: pointer;
-      color: #020617;
-      line-height: 1;
-    }
+/* ===================================================
+   2) تیترها و دکمه‌ها
+   =================================================== */
+.section{padding:100px 0}
+.section--soft{background:var(--surface)}
 
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+.section-head{max-width:660px;margin:0 auto 60px;text-align:center}
+.eyebrow{
+  display:inline-block;font-size:13px;font-weight:600;color:var(--accent);
+  background:var(--accent-soft);padding:6px 16px;border-radius:100px;margin-bottom:18px;
+}
+.section-head h2{
+  font-size:clamp(26px,3.4vw,38px);font-weight:800;line-height:1.5;letter-spacing:-.5px;
+}
+.section-head p{color:var(--muted);margin-top:14px;font-size:15.5px}
 
-    @media (max-width: 480px) {
-      .site-notice {
-        right: 10px;
-        left: 10px;
-        top: 10px;
-        max-width: unset;
-      }
-    }
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  padding:13px 28px;border-radius:100px;font-weight:600;font-size:15px;
+  transition:all .25s ease;white-space:nowrap;
+}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 10px 24px -10px rgba(37,99,235,.7)}
+.btn-primary:hover{background:var(--accent-dark);transform:translateY(-2px)}
+.btn-ghost{border:1px solid var(--border);color:var(--text)}
+.btn-ghost:hover{border-color:var(--text);background:var(--surface)}
+.btn-sm{padding:10px 20px;font-size:14px}
+.btn-block{width:100%}
 
-    header { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 40px 20px; }
-    .hero { max-width: 1100px; width: 100%; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center; animation: fadeUp 1s ease; }
-    .hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 20px; }
-    .hero p { color: var(--muted); margin-bottom: 30px; }
-    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
-    .btn { padding: 14px 28px; border-radius: var(--radius); font-weight: 600; transition: 0.3s; cursor: pointer; }
-    .btn-primary { background: var(--primary); color: #020617; }
-    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(56,189,248,0.3); }
-    .btn-outline { border: 1px solid #334155; }
-    .btn-outline:hover { background: #020617; }
+/* ===================================================
+   3) پلیس‌هولدرها (جای تصاویر)
+   =================================================== */
+.ph{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+  background:var(--surface);border:1px dashed #d5dae2;border-radius:var(--radius);
+  color:#9aa3af;font-size:13px;font-weight:500;text-align:center;padding:20px;
+}
+.ph svg{opacity:.55}
 
-    .hero-image { background: #020617; border-radius: var(--radius); height: 380px; display: flex; align-items: center; justify-content: center; color: var(--muted); border: 1px dashed #334155; }
-    .hero-image img { width:100%; height:100%; object-fit: cover; border-radius: var(--radius); }
+/* ===================================================
+   4) هدر
+   =================================================== */
+.header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(255,255,255,.82);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid transparent;transition:border-color .3s;
+}
+.header.scrolled{border-bottom-color:var(--border)}
 
-    section { padding: 100px 20px; }
-    .container { max-width: 1100px; margin: auto; }
-    .section-title { text-align: center; margin-bottom: 60px; animation: fadeUp 1s ease; }
-    .section-title h2 { font-size: 2.2rem; margin-bottom: 10px; }
-    .section-title p { color: var(--muted); }
+.nav{display:flex;align-items:center;justify-content:space-between;height:78px;gap:24px}
 
-    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; }
-    .feature { background: var(--card); padding: 30px; border-radius: var(--radius); border: 1px solid #1f2933; transition: 0.4s; }
-    .feature:hover { transform: translateY(-6px); border-color: var(--primary); }
-    .feature h3 { margin-bottom: 10px; }
-    .feature p { color: var(--muted); }
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18.5px;letter-spacing:-.3px}
 
-    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
-    .gallery-item {
-      height: 380px;
-      border-radius: var(--radius);
-      border: 1px dashed #334155;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
-      background: #020617;
-    }
-    /* گالری محصول */
-    .gallery.product-gallery .gallery-item {
-      aspect-ratio: 1 / 1;
-      height: auto;
-    }
+.logo-main{display:flex;flex-direction:column;align-items:center;gap:4px}
+.logo-legal{font-size:11px;color:var(--text);font-weight:600;white-space:nowrap}.logo-box{width:190px;height:70px;border-radius:12px;background:var(--accent);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.15;box-shadow:0 10px 24px -14px rgba(37,99,235,.75)}
+.logo-box strong{font-size:30px;font-weight:800;letter-spacing:1px;direction:ltr}
+.logo-box small{font-size:10px;font-weight:500;margin-top:3px;white-space:nowrap}
 
-    .gallery.product-gallery .gallery-item img {
-      object-fit: contain;
-      background: #020617;
-    }
-    .product-swiper {
-      width: 100%;
-      max-width: 1100px;
-      margin: auto;
-      padding: 20px 0;
-    }
+.logo-mark{
+  width:16px;height:16px;border-radius:16px;background:var(--accent);
+  display:grid;place-items:center;color:#fff;flex-shrink:0;
+}
 
-    .product-swiper .swiper-slide {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: var(--radius);
-      background: #020617;
-    }
+.nav-links{display:flex;gap:34px;font-size:15px;font-weight:500}
+.nav-links a{color:var(--muted);transition:color .2s}
+.nav-links a:hover{color:var(--text)}
 
-    .product-swiper img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-      border-radius: var(--radius);
-    }
+.nav-actions{display:flex;align-items:center;gap:12px}
 
-    .contact { margin-top: 40px; text-align: center; }
-    .contact-info p { color: var(--muted); margin-bottom: 10px; }
+.nav-toggle{
+  display:none;width:42px;height:42px;border-radius:12px;border:1px solid var(--border);
+  flex-direction:column;align-items:center;justify-content:center;gap:5px;transition:.2s;
+}
+.nav-toggle span{display:block;width:18px;height:2px;background:var(--text);border-radius:2px;transition:.28s}
+.nav-toggle.active span:nth-child(1){transform:translateY(3.5px) rotate(45deg)}
+.nav-toggle.active span:nth-child(2){transform:translateY(-3.5px) rotate(-45deg)}
 
-    footer { padding: 40px 20px; text-align: center; color: var(--muted); border-top: 1px solid #1f2933; }
+.mobile-menu{
+  position:absolute;top:100%;inset-inline:0;
+  background:#fff;border-bottom:1px solid var(--border);
+  padding:14px 24px 26px;display:none;flex-direction:column;gap:2px;
+  box-shadow:0 20px 40px -24px rgba(13,17,23,.25);
+}
+.mobile-menu.open{display:flex}
+.mobile-menu a{padding:12px 0;font-weight:500;color:var(--muted);border-bottom:1px solid var(--border)}
+.mobile-menu a:last-of-type{border-bottom:none}
+.mobile-menu .btn{margin-top:14px}
 
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+/* ===================================================
+   5) هیرو
+   =================================================== */
+.hero{padding:76px 0 96px;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
 
-    @media (max-width: 768px) {
-      .gallery-item {
-        aspect-ratio: 1 / 1;
-      }
-      .hero { grid-template-columns: 1fr; text-align: center; }
-      .hero-buttons { justify-content: center; }
-      /* کارت‌های مراحل */
-      #how-to-use .feature {
-        padding: 22px;
-      }
+.hero h1{
+  font-size:clamp(30px,4.4vw,52px);font-weight:800;line-height:1.4;
+  letter-spacing:-1px;margin-bottom:22px;
+}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero-lead{color:var(--muted);font-size:16.5px;max-width:520px;margin-bottom:34px}
 
-      /* شماره مرحله */
-      .step-badge {
-        width: 36px;
-        height: 36px;
-        font-size: 16px;
-      }
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
 
-      /* عنوان مرحله */
-      #how-to-use h3 {
-        font-size: 1.1rem;
-      }
+.hero-stats{
+  display:flex;gap:40px;margin-top:46px;padding-top:30px;border-top:1px solid var(--border);flex-wrap:wrap;
+}
+.hero-stats div strong{display:block;font-size:24px;font-weight:800;letter-spacing:-.5px}
+.hero-stats div span{font-size:13px;color:var(--muted)}
 
-      /* توضیح مرحله */
-      #how-to-use p {
-        font-size: 0.95rem;
-      }
+.hero-visual{position:relative}
+.hero-ph{aspect-ratio:5/4;width:100%}
+.hero-glow{
+  position:absolute;top:-60px;inset-inline-end:-60px;width:320px;height:320px;border-radius:50%;
+  background:radial-gradient(circle,rgba(37,99,235,.18),transparent 70%);filter:blur(20px);z-index:-1;
+}
+.float-card{
+  position:absolute;bottom:18px;inset-inline-start:18px;
+  background:#fff;border:1px solid var(--border);border-radius:14px;
+  padding:12px 18px;display:flex;align-items:center;gap:11px;
+  box-shadow:var(--shadow);
+}
+.float-card .dot{width:9px;height:9px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,.16)}
+.float-card strong{display:block;font-size:15px;line-height:1.4}
+.float-card small{color:var(--muted);font-size:12px}
 
-      /* تصویر مراحل */
-      #how-to-use .gallery-item {
-        aspect-ratio: 16 / 9;
-        height: auto;
-      }
+/* ===================================================
+   6) نوار اعتماد
+   =================================================== */
+.trust{padding:34px 0;border-block:1px solid var(--border)}
+.trust-inner{display:flex;align-items:center;justify-content:center;gap:56px;flex-wrap:wrap}
+.trust-label{font-size:13px;color:var(--muted);font-weight:500}
+.trust-logo{
+  width:110px;height:34px;border-radius:8px;background:var(--surface-2);
+  display:grid;place-items:center;font-size:11px;color:#a6adb8;font-weight:600;
+}
 
-      #how-to-use .gallery-item img {
-        object-fit: contain;
-        background: #020617;
-      }
-    }
-  </style>
+/* ===================================================
+   7) محصولات
+   =================================================== */
+.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+
+.product-card{
+  background:#fff;border:1px solid var(--border);border-radius:22px;
+  display:flex;flex-direction:column;overflow:hidden;transition:all .3s ease;
+}
+.product-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:#dbe0e7}
+
+.product-media{padding:16px;background:linear-gradient(180deg,#fafbfc,#f2f4f8);border-bottom:1px solid var(--border)}
+.product-media .ph{aspect-ratio:4/3}
+
+.product-body{padding:24px;display:flex;flex-direction:column;flex:1}
+.product-tag{
+  align-self:flex-start;font-size:12px;font-weight:600;color:var(--accent);
+  background:var(--accent-soft);padding:4px 12px;border-radius:100px;margin-bottom:14px;
+}
+.product-body h3{font-size:18px;font-weight:700;margin-bottom:10px;letter-spacing:-.3px}
+.product-body .desc{color:var(--muted);font-size:14.5px;min-height:56px}
+
+.specs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 22px}
+.specs li{
+  font-size:12.5px;color:var(--muted);background:var(--surface);
+  border:1px solid var(--border);padding:5px 11px;border-radius:9px;
+}
+
+.product-foot{
+  margin-top:auto;padding-top:18px;border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+}
+.price{font-size:13px;color:var(--muted);line-height:1.6}
+.price strong{display:block;font-size:15px;color:var(--text);font-weight:700}
+
+/* ===================================================
+   8) ویژگی‌ها
+   =================================================== */
+.features-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+.feature{
+  background:#fff;border:1px solid var(--border);border-radius:20px;padding:30px 26px;
+  transition:all .3s ease;
+}
+.feature:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.feature-icon{
+  width:48px;height:48px;border-radius:14px;background:var(--accent-soft);
+  color:var(--accent);display:grid;place-items:center;margin-bottom:20px;
+}
+.feature h3{font-size:16.5px;font-weight:700;margin-bottom:9px}
+.feature p{font-size:14px;color:var(--muted)}
+
+/* ===================================================
+   9) درباره ما
+   =================================================== */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.about-ph{aspect-ratio:4/3;width:100%}
+.about-text h2{font-size:clamp(24px,3vw,34px);font-weight:800;line-height:1.5;margin-bottom:20px;letter-spacing:-.5px}
+.about-text p{color:var(--muted);font-size:15.5px;margin-bottom:16px}
+.about-list{margin:26px 0 32px;display:flex;flex-direction:column;gap:13px}
+.about-list li{display:flex;align-items:flex-start;gap:11px;font-size:15px;font-weight:500}
+.about-list svg{flex-shrink:0;margin-top:6px;color:var(--accent)}
+
+/* ===================================================
+   10) درباره eleXify
+   =================================================== */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.testi{
+  background:#fff;border:1px solid var(--border);border-radius:20px;padding:30px 26px;
+  display:flex;flex-direction:column;gap:20px;
+}
+.testi-stars{display:flex;gap:3px;color:#f59e0b}
+.testi p{font-size:14.5px;color:#3f4652;flex:1}
+.testi-user{display:flex;align-items:center;gap:13px;padding-top:18px;border-top:1px solid var(--border)}
+.avatar{
+  width:42px;height:42px;border-radius:50%;background:var(--surface-2);
+  display:grid;place-items:center;font-size:12px;color:#9aa3af;font-weight:600;flex-shrink:0;
+}
+.testi-user strong{display:block;font-size:14.5px;line-height:1.5}
+.testi-user small{color:var(--muted);font-size:12.5px}
+
+/* ===================================================
+   11) بنر CTA
+   =================================================== */
+.cta-band{
+  background:var(--text);color:#fff;border-radius:28px;
+  padding:64px 56px;display:flex;align-items:center;justify-content:space-between;
+  gap:40px;flex-wrap:wrap;position:relative;overflow:hidden;
+}
+.cta-band::after{
+  content:'';position:absolute;inset-inline-end:-80px;top:-80px;width:320px;height:320px;
+  background:radial-gradient(circle,rgba(37,99,235,.55),transparent 70%);filter:blur(10px);
+}
+.cta-band h2{font-size:clamp(22px,2.8vw,32px);font-weight:800;margin-bottom:12px;letter-spacing:-.5px;position:relative}
+.cta-band p{color:#9aa4b2;font-size:15px;max-width:520px;position:relative}
+.cta-band .btn{position:relative;background:#fff;color:var(--text)}
+.cta-band .btn:hover{background:#e9edf3;transform:translateY(-2px)}
+
+/* ===================================================
+   12) تماس
+   =================================================== */
+.contact-grid{display:block;max-width:760px;margin:0 auto}
+
+.field{display:flex;flex-direction:column;gap:8px}
+.field.full{grid-column:1 / -1}
+.field label{font-size:13.5px;font-weight:600;color:#374151}
+.field input,.field textarea{
+  width:100%;padding:13px 16px;border:1px solid var(--border);border-radius:13px;
+  background:var(--surface);color:var(--text);font-size:14.5px;transition:.2s;
+}
+.field textarea{min-height:132px;resize:vertical}
+.field input:focus,.field textarea:focus{
+  outline:none;border-color:var(--accent);background:#fff;box-shadow:0 0 0 4px var(--accent-soft);
+}
+.field input::placeholder,.field textarea::placeholder{color:#a9b0bb}
+
+.contact-info{display:flex;flex-direction:column;gap:16px}
+.info-card{
+  background:#fff;border:1px solid var(--border);border-radius:18px;padding:22px 24px;
+  display:flex;align-items:flex-start;gap:15px;
+}
+.info-icon{
+  width:42px;height:42px;border-radius:12px;background:var(--accent-soft);color:var(--accent);
+  display:grid;place-items:center;flex-shrink:0;
+}
+.info-card h4{font-size:14.5px;font-weight:700;margin-bottom:3px}
+.info-card p{font-size:14px;color:var(--muted);direction:ltr;text-align:right}
+.info-card p.fa{direction:rtl;text-align:right}
+
+/* ===================================================
+   13) فوتر
+   =================================================== */
+.footer{background:#0d1117;color:#8b95a3;padding:76px 0 0;font-size:14.5px}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:48px;padding-bottom:60px}
+.footer .logo{color:#fff;margin-bottom:18px}
+.footer .logo-mark{background:var(--accent)}
+.footer-about{font-size:14px;line-height:1.9;max-width:320px}
+.footer h4{color:#fff;font-size:15px;font-weight:700;margin-bottom:20px}
+.footer-links{display:flex;flex-direction:column;gap:12px}
+.footer-links a{transition:color .2s;font-size:14px}
+.footer-links a:hover{color:#fff}
+
+.socials{display:flex;gap:10px;margin-top:22px}
+.socials a{
+  width:38px;height:38px;border-radius:11px;background:rgba(255,255,255,.06);
+  display:grid;place-items:center;color:#8b95a3;transition:.25s;
+}
+.socials a:hover{background:var(--accent);color:#fff;transform:translateY(-2px)}
+
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.08);padding:26px 0;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  font-size:13.5px;
+}
+
+/* ===================================================
+   14) انیمیشن ظاهر شدن
+   =================================================== */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+
+/* ===================================================
+   15) صفحه جزئیات محصول
+   =================================================== */
+.product-view{display:none}
+.product-view.active{display:block;animation:fadeUp .5s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+.breadcrumb{
+  display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--muted);
+  padding:30px 0 6px;flex-wrap:wrap;
+}
+.breadcrumb a{color:var(--accent);transition:color .2s}
+.breadcrumb a:hover{color:var(--accent-dark)}
+.breadcrumb .sep{color:#c2c8d2}
+.breadcrumb .current{color:var(--text);font-weight:600}
+
+.detail-hero{
+  display:grid;grid-template-columns:1.05fr 1fr;gap:56px;
+  padding:28px 0 76px;align-items:start;
+}
+
+.detail-gallery{position:relative}
+.gallery-main{aspect-ratio:4/3;width:100%;border-radius:22px}
+.gallery-thumbs{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px;
+}
+.gallery-thumbs .ph{aspect-ratio:1;border-radius:14px;padding:8px;font-size:11px;cursor:pointer;transition:.25s}
+.gallery-thumbs .ph:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.gallery-thumbs .ph svg{width:18px;height:18px}
+
+.detail-info .product-tag{margin-bottom:16px}
+.detail-info h1{
+  font-size:clamp(24px,3.2vw,36px);font-weight:800;line-height:1.4;
+  letter-spacing:-.5px;margin-bottom:16px;
+}
+.detail-info .lead{color:var(--muted);font-size:16px;margin-bottom:28px}
+
+.detail-meta{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
+  padding:22px 0;border-block:1px solid var(--border);margin-bottom:28px;
+}
+.detail-meta span{display:block;font-size:12.5px;color:var(--muted);margin-bottom:4px}
+.detail-meta strong{font-size:15px;font-weight:700}
+
+.detail-actions{display:flex;gap:12px;flex-wrap:wrap}
+
+/* بخش‌های محتوای جزئیات */
+.detail-sections{padding:8px 0 40px}
+.detail-block{margin-bottom:64px}
+.detail-block h2{
+  font-size:clamp(19px,2.3vw,24px);font-weight:800;letter-spacing:-.3px;
+  margin-bottom:22px;display:flex;align-items:center;gap:12px;
+}
+.detail-block h2::before{
+  content:'';width:5px;height:22px;border-radius:3px;background:var(--accent);flex-shrink:0;
+}
+.detail-block p{color:#3f4652;font-size:15.5px;margin-bottom:14px}
+.detail-block p:last-child{margin-bottom:0}
+
+.detail-two-col{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+
+.specs-table{
+  width:100%;border-collapse:collapse;border:1px solid var(--border);
+  border-radius:16px;overflow:hidden;font-size:14.5px;
+}
+.specs-table tr:nth-child(odd){background:var(--surface)}
+.specs-table th,.specs-table td{
+  padding:14px 20px;text-align:right;border-bottom:1px solid var(--border);
+}
+.specs-table tr:last-child th,.specs-table tr:last-child td{border-bottom:none}
+.specs-table th{font-weight:600;color:var(--muted);width:42%}
+.specs-table td{color:var(--text);font-weight:500}
+
+.feature-list{display:grid;grid-template-columns:1fr;gap:12px}
+.feature-list li{
+  display:flex;gap:12px;align-items:flex-start;font-size:14.5px;font-weight:500;
+  background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px 18px;
+  transition:.25s;
+}
+.feature-list li:hover{border-color:#dbe0e7;box-shadow:0 12px 24px -18px rgba(13,17,23,.25)}
+.feature-list svg{color:var(--accent);flex-shrink:0;margin-top:5px}
+
+.more-images{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.more-images .ph{aspect-ratio:4/3}
+
+.detail-cta{
+  background:var(--surface);border:1px solid var(--border);border-radius:24px;
+  padding:44px 40px;text-align:center;margin-top:20px;
+}
+.detail-cta h3{font-size:20px;font-weight:800;margin-bottom:10px;letter-spacing:-.3px}
+.detail-cta p{color:var(--muted);font-size:15px;margin-bottom:26px}
+
+/* ===================================================
+   16) ریسپانسیو
+   =================================================== */
+@media (max-width:1024px){
+  .hero-grid{gap:44px}
+  .features-grid{grid-template-columns:repeat(2,1fr)}
+  .about-grid{gap:44px}
+  .detail-hero{gap:40px}
+}
+
+@media (max-width:980px){
+  .products-grid{grid-template-columns:repeat(2,1fr)}
+  .testi-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:40px}
+  .detail-two-col{grid-template-columns:1fr;gap:40px}
+  .more-images{grid-template-columns:repeat(2,1fr)}
+}
+
+@media (max-width:900px){
+  .nav-links,.nav-actions .btn{display:none}
+  .nav-toggle{display:flex}
+  .section{padding:80px 0}
+  .hero{padding:56px 0 72px}
+  .hero-grid{grid-template-columns:1fr;gap:48px}
+  .hero-lead{max-width:none}
+  .hero-visual{order:-1}
+  .about-grid{grid-template-columns:1fr}
+  .about-visual{order:-1}
+  .cta-band{padding:48px 32px;text-align:center;justify-content:center}
+  .detail-hero{grid-template-columns:1fr;gap:36px}
+  .detail-cta{padding:36px 24px}
+}
+
+@media (max-width:680px){
+  .container{padding:0 18px}
+  .products-grid{grid-template-columns:1fr}
+  .features-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .hero-stats{gap:26px}
+  .trust-inner{gap:24px}
+  .section-head{margin-bottom:44px}
+  .gallery-thumbs{grid-template-columns:repeat(4,1fr);gap:10px}
+  .detail-meta{grid-template-columns:1fr 1fr;gap:14px}
+  .more-images{grid-template-columns:1fr}
+}
+
+/* Product image sizing */
+.product-media { aspect-ratio: 4 / 3; overflow: hidden; }
+.product-media img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.gallery-main { width: 100%; height: 100%; object-fit: contain; display: block; }
+.gallery-thumbs .ph { overflow: hidden; }
+.gallery-thumbs .ph img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.more-images .ph { overflow: hidden; }
+.more-images .ph img { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+</style>
 </head>
+
 <body>
-  <div class="site-notice" id="siteNotice">
-    <span>⚠️ توجه: سایت در حال بروزرسانی است. ممکن است برخی بخش‌ها موقتاً در دسترس نباشند.</span>
-    <button onclick="closeNotice()">×</button>
+
+<!-- ================= HEADER ================= -->
+<header class="header" id="header">
+  <div class="container">
+    <nav class="nav">
+      <a href="#" class="logo logo-main" aria-label="elexify - رهپویان فناوری امارد">
+        <span class="logo-box">
+          <strong>elexify</strong>
+          <small>رهپویان فناوری امارد</small>
+        </span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#products">محصولات</a></li>
+        <li><a href="#features">مزایا</a></li>
+        <li><a href="#about">درباره ما</a></li>
+        <li><a href="#testimonials">نظرات</a></li>
+        <li><a href="#contact">تماس</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="#contact" class="btn btn-primary btn-sm">مشاوره رایگان</a>
+        <button class="nav-toggle" id="navToggle" aria-label="باز و بسته کردن منو">
+          <span></span><span></span>
+        </button>
+      </div>
+    </nav>
   </div>
 
-  <!-- هدر / معرفی اصلی -->
-  <header>
-    <div class="hero">
-      <div class="logo">
-        eleXify co
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#products">محصولات</a>
+    <a href="#features">مزایا</a>
+    <a href="#about">درباره ما</a>
+    <a href="#testimonials">نظرات</a>
+    <a href="#contact">تماس</a>
+    <a href="#contact" class="btn btn-primary">مشاوره رایگان</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============================================================
+       نمای اصلی سایت (لیست محصولات، درباره ما، تماس و ...)
+       ============================================================ -->
+  <div id="mainView">
+
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content reveal">
+            <span class="eyebrow">طراحی و توسعه محصولات الکترونیکی</span>
+            <h1>طراحی، ساخت و توسعه راهکارهای الکترونیکی</h1>
+            <p class="hero-lead">
+              از ایده و طراحی تا نمونه‌سازی و توسعه محصول؛ eleXify راهکارهای الکترونیکی متناسب با نیاز شما را طراحی و پیاده‌سازی می‌کند.
+            </p>
+            <div class="hero-actions">
+              <a href="#products" class="btn btn-primary">
+                مشاهده محصولات
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+              </a>
+              <a href="#contact" class="btn btn-ghost">دریافت مشاوره</a>
+            </div>
+
+            <div class="hero-stats">
+              <div><strong>۳</strong><span>محصول اصلی</span></div>
+              <!--<div><strong>۱</strong><span>برند توسعه‌دهنده</span></div> -->
+              <div><strong>∞</strong><span>ایده قابل ساخت</span></div>
+            </div>
+          </div>
+
+          <div class="hero-visual reveal">
+            <div class="hero-glow"></div>
+            <div class="ph hero-ph">
+              <img src="image/BB/1.png" alt="Byte Box">
+              <span>تصویر اصلی / ویدیو معرفی شرکت</span>
+            </div>
+
+            <!--<div class="float-card">
+              <span class="dot"></span>
+              <div>
+                <strong>توسعه و تست</strong>
+                <small>۱۸ ماه گارانتی محصولات</small>
+              </div>
+            </div>
+          -->
+          </div>
+        </div>
       </div>
+    </section>
+
+    <!-- ================= TRUST BAR ================= -->
+    <section class="trust">
+      <div class="container">
+        <div class="trust-inner">
+         <!-- <span class="trust-label">محصولات eleXify</span> -->
+          <div class="trust-logo">Byte Box</div>
+          <div class="trust-logo">Patient Register</div>
+          <div class="trust-logo">e-call</div>
+         <!-- <div class="trust-logo">elexify</div> -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PRODUCTS ================= -->
+    <section class="section" id="products">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">محصولات ما</span>
+          <h2>ایده هایی که تاکنون به محصول تبدیل شدند</h2> 
+          <p>تا کنون سه محصول برای حل نیازهای واقعی در حوزه‌های مختلف توسعه یافته‌اند.</p>
+        </div>
+
+        <div class="products-grid">
+
+          <!-- ===== محصول ۱ ===== -->
+          <article class="product-card reveal">
+            <div class="product-media">
+              <img src="image/BB/1.png" alt="تصویر Byte Box">
+            </div>
+            <div class="product-body">
+              <span class="product-tag">مدیریت انواع مموری</span>
+              <h3>Byte Box</h3>
+              <p class="desc">مدیریت بی‌سیم فایل‌های انواع مموری از طریق موبایل یا لپ‌تاپ؛ قابل استفاده بدون اینترنت در شبکه محلی و قابل مدیریت از راه دور با اینترنت.</p>
+              <ul class="specs">
+                <li>قابلیت مدیریت دسترسی کاربر</li>
+                <li> آپلود، دانلود، تغییر نام و حذف فایل ها</li>
+                <li>+10 کاربر همزمان</li>
+              </ul>
+              <div class="product-foot">
+                <div class="price">
+                  <span>قیمت</span>
+                  <strong>تماس بگیرید</strong>
+                </div>
+                <a href="#product-1" class="btn btn-ghost btn-sm">جزئیات</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- ===== محصول ۲ ===== -->
+          <article class="product-card reveal">
+            <div class="product-media">
+              <img src="image/PR/1.png" alt="تصویر Byte Box">
+            </div>
+            <div class="product-body">
+              <span class="product-tag">پزشکی</span>
+              <h3>Patient Register</h3>
+              <p class="desc">مدیریت آفلاین پرونده بیماران، پذیرش و نوبت‌ها از طریق تلفن همراه یا لپ‌تاپ؛ بدون نیاز به اینترنت و با امکان مدیریت اطلاعات در شبکه محلی.</p>
+              <ul class="specs">
+                <li>جدول نوبت دهی و ثبت نوبت به صورت خودکار</li>
+                <li>ارسال پیامک یاداوری نوبت برای بیماران</li>
+                <li>+10 کاربر همزمان</li>
+              </ul>
+              <div class="product-foot">
+                <div class="price">
+                  <span>قیمت</span>
+                  <strong>تماس بگیرید</strong>
+                </div>
+                <a href="#product-2" class="btn btn-ghost btn-sm">جزئیات</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- ===== محصول ۳ ===== -->
+          <article class="product-card reveal">
+            <div class="product-media">
+              <img src="image/EC/1.png" alt="تصویر Byte Box">
+            </div>
+            <div class="product-body">
+              <span class="product-tag">پزشکی</span>
+              <h3>e-call</h3>
+              <p class="desc">سیستم نمایش و فراخوان نوبت بیماران؛ نمایش دهنده نام بیماران و فراخوان صوتی فارسی نام بیماران  .</p>
+              <ul class="specs">
+                <li>راه اندازی ساده</li>
+                <li>امکان شخصی سازی نمایشگر</li>
+                <li>+10 کاربر همزمان</li>
+              </ul>
+              <div class="product-foot">
+                <div class="price">
+                  <span>قیمت</span>
+                  <strong>تماس بگیرید</strong>
+                </div>
+                <a href="#product-3" class="btn btn-ghost btn-sm">جزئیات</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FEATURES ================= -->
+    <section class="section section--soft" id="features">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">چرا ما؟</span>
+          <h2>مزایای همکاری با ما</h2>
+          <p>توسعه کاربردی، طراحی متناسب با نیاز و پشتیبانی فنی در مسیر استفاده از محصولات.</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature reveal">
+            <div class="feature-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/>
+                <path d="M9 12l2 2 4-4"/>
+              </svg>
+            </div>
+            <h3>توسعه و تست</h3>
+            <p>بررسی و تست محصول در مراحل توسعه برای رسیدن به عملکرد پایدار.</p>
+          </div>
+
+          <div class="feature reveal">
+            <div class="feature-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="1" y="6" width="13" height="10" rx="2"/>
+                <path d="M14 9h4l3 3v4h-7"/>
+                <circle cx="5.5" cy="18" r="1.8"/>
+                <circle cx="17.5" cy="18" r="1.8"/>
+              </svg>
+            </div>
+            <h3>توسعه سفارشی</h3>
+            <p>امکان طراحی و توسعه راهکار متناسب با نیاز پروژه.</p>
+          </div>
+
+          <div class="feature reveal">
+            <div class="feature-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 14v-2a8 8 0 0116 0v2"/>
+                <rect x="2" y="13" width="4" height="6" rx="1.5"/>
+                <rect x="18" y="13" width="4" height="6" rx="1.5"/>
+                <path d="M20 19v1a3 3 0 01-3 3h-3"/>
+              </svg>
+            </div>
+            <h3>پشتیبانی فنی</h3>
+            <p>پشتیبانی و راهنمایی فنی برای  همه محصولات </p>
+          </div>
+
+          <div class="feature reveal">
+            <div class="feature-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="9" r="5"/>
+                <path d="M8.5 13.5L7 22l5-3 5 3-1.5-8.5"/>
+              </svg>
+            </div>
+            <h3>طراحی کاربردی</h3>
+            <p>تمرکز بر حل مسئله، سادگی استفاده و قابلیت توسعه محصول.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-visual reveal">
+            <div class="ph about-ph">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="16" rx="2"/>
+                <circle cx="8.5" cy="9.5" r="1.5"/>
+                <path d="M21 16l-5-5L5 20"/>
+              </svg>
+              <span>تصویر مجموعه / کارخانه</span>
+            </div>
+          </div>
+
+          <div class="about-text reveal">
+            <span class="eyebrow">درباره ما</span>
+            <h2>از ایده تا محصول</h2>
+            <p>
+              eleXify با نام تجاری رهپویان فناوری آمارد است؛ مجموعه‌ای فعال در طراحی و توسعه راهکارها و محصولات الکترونیکی.
+              تمرکز ما تبدیل ایده‌ها و مسائل واقعی به نمونه اولیه و محصول قابل استفاده است.
+            </p>
+            <p>
+              تیم مهندسی ما با بهره‌گیری از تجهیزات مدرن، راهکارهای سفارشی متناسب با نیاز
+              هر پروژه را طراحی و اجرا می‌کند.
+            </p>
+
+            <ul class="about-list">
+              <li>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                طراحی و توسعه محصول
+              </li>
+              <li>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                نمونه‌سازی و تولید سفارشی
+              </li>
+              <li>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                مشاوره و تحلیل ایده
+              </li>
+            </ul>
+
+            <a href="#contact" class="btn btn-primary">شروع همکاری</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TESTIMONIALS ================= -->
+    <section class="section section--soft" id="testimonials">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">درباره ما</span>
+          <h2>راهکارهایی برای مسائل واقعی</h2>
+          <p>ما روی توسعه محصولاتی تمرکز داریم که یک نیاز مشخص را به شکل ساده و کاربردی حل کنند.</p>
+        </div>
+
+        <div class="testi-grid">
+          <div class="testi reveal">
+            <div class="testi-stars">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9L12 2z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9L12 2z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9L12 2z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9L12 2z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9L12 2z"/></svg>
+            </div>
+            <p>«توسعه محصول برای ما از شناخت مسئله و نیاز واقعی شروع می‌شود.»</p>
+            <div class="testi-user">
+              <div class="avatar">تصویر</div>
+              <div>
+                <strong>تیم eleXify</strong>
+                <small>رهپویان فناوری آمارد</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi reveal">
+            <div class="testi-stars">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9L12 2z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9L12 2z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9L12 2z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9L12 2z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9L12 2z"/></svg>
+            </div>
+            <p>«از نمونه اولیه تا محصول، مسیر توسعه را متناسب با نیاز پروژه پیش می‌بریم.»</p>
+            <div class="testi-user">
+              <div class="avatar">تصویر</div>
+              <div>
+                <strong>تیم eleXify</strong>
+                <small>رهپویان فناوری آمارد</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi reveal">
+            <div class="testi-stars">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9L12 2z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9L12 2z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9L12 2z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9L12 2z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9L12 2z"/></svg>
+            </div>
+            <p>«هدف ما ساخت راهکارهای الکترونیکی قابل استفاده و قابل توسعه است.»</p>
+            <div class="testi-user">
+              <div class="avatar">تصویر</div>
+              <div>
+                <strong>تیم eleXify</strong>
+                <small>رهپویان فناوری آمارد</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CTA BAND ================= -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="cta-band reveal">
+          <div>
+            <h2>ایده‌ای برای ساخت دارید؟</h2>
+            <p>برای بررسی ایده، نیازمندی‌ها و امکان توسعه محصول با ما در تماس باشید.</p>
+          </div>
+          <a href="#contact" class="btn">
+            تماس با ما
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section class="section section--soft" id="contact">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">ارتباط با ما</span>
+          <h2>تماس با ما</h2>
+          <p>برای ارتباط با ما از اطلاعات تماس زیر استفاده کنید.</p>
+        </div>
+
+        <div class="contact-grid">
+<div class="contact-info reveal">
+            <div class="info-card">
+              <div class="info-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.2a2 2 0 012.1-.5c.9.3 1.8.6 2.8.7a2 2 0 011.7 2z"/>
+                </svg>
+              </div>
+              <div>
+                <h4>تلفن تماس</h4>
+                <p>09114158463</p>
+                <p>09030711968</p>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <div class="info-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="4" width="20" height="16" rx="2"/>
+                  <path d="M22 7l-10 6L2 7"/>
+                </svg>
+              </div>
+              <div>
+                <h4>ایمیل</h4>
+                <p>elexify.co@gmail.com</p>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <div class="info-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <div>
+                <h4>آدرس دفتر مرکزی</h4>
+                <p class="fa">مازندران، آمل، خ امام رضا(ع)، مرکز رشد و فناوری آمل</p>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <div class="info-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="9"/>
+                  <path d="M12 7v5l3 2"/>
+                </svg>
+              </div>
+              <div>
+                <h4>ساعات کاری</h4>
+                <p class="fa">10 الی 19</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /#mainView -->
+
+  <!-- ============================================================
+       صفحه جزئیات محصول ۱
+       ============================================================ -->
+  <section class="product-view" id="product-1">
+    <div class="container">
+
+      <!-- مسیر راهنما -->
+      <nav class="breadcrumb">
+        <a href="#products">محصولات</a>
+        <span class="sep">/</span>
+        <span class="current">Byte Box</span>
+      </nav>
+
+      <!-- بخش هیرو جزئیات -->
+      <div class="detail-hero">
+        <div class="detail-gallery">
+          <img class="gallery-main" src="image/BB/1.png" alt="تصویر اصلی محصول">
+          <div class="gallery-thumbs">
+            <div class="ph"><img src="image/BB/2.png" alt="تصویر محصول"></div>
+            <div class="ph"><img src="image/BB/3.jpg" alt="تصویر محصول"></div>
+            <div class="ph"><img src="image/BB/4.jpg" alt="تصویر محصول"></div>
+            <div class="ph"><img src="image/BB/5.png" alt="تصویر محصول"></div>
+          </div>
+        </div>
+
+        <div class="detail-info">
+          <span class="product-tag">انتقال انواع فایل</span>
+          <h1>Byte Box</h1>
+          <p class="lead">
+            یک سرور فایل بی‌سیم قابل حمل و کاربردی برای دسترسی و مدیریت فایل‌های انواع مموری؛
+            قابل استفاده بدون اینترنت در شبکه محلی و قابل مدیریت از راه دور در هر زمان با اتصال به اینترنت.
+          </p>
+
+
+          <div class="detail-meta">
+            <div><span>قیمت</span><strong>تماس بگیرید</strong></div>
+            <div><span>گارانتی</span><strong>18 ماه</strong></div>
+            <div><span>وضعیت</span><strong>موجود</strong></div>
+          </div>
+
+          <div class="detail-actions">
+            <a href="#contact" class="btn btn-primary">درخواست قیمت</a>
+            <a href="#products" class="btn btn-ghost">بازگشت به محصولات</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- بخش‌های محتوا -->
+      <div class="detail-sections">
+
+        <!-- توضیحات کامل -->
+      <div class="detail-block">
+        <h2>توضیحات کامل محصول</h2>
+        <p>
+          Byte Box یک سرور فایل بی‌سیم کوچک و کاربردی است که حافظه USB را به یک فضای ذخیره‌سازی قابل دسترسی از طریق شبکه تبدیل می‌کند. کاربران می‌توانند با تلفن همراه، لپ‌تاپ یا سایر دستگاه‌های متصل، بدون نیاز به نصب نرم‌افزار به فایل‌ها دسترسی داشته باشند و عملیات‌هایی مانند آپلود، دانلود، تغییر نام و مدیریت فایل‌ها را انجام دهند.
+        </p>
+        <p>
+          Byte Box برای استفاده در شبکه محلی نیازی به اینترنت ندارد و می‌تواند با ایجاد شبکه بی‌سیم اختصاصی، دسترسی سریع و ساده به فایل‌ها را فراهم کند. همچنین در صورت اتصال دستگاه به اینترنت، امکان دسترسی و مدیریت آن از راه دور نیز فراهم است؛ بنابراین مدیر می‌تواند دستگاه و فایل‌های آن را از هر مکانی که دسترسی اینترنت وجود داشته باشد مدیریت کند.
+        </p>
+        <p>
+          یکی از قابلیت‌های مهم Byte Box، امکان تعریف و مدیریت کلاینت‌ها(کاربران متصل به دستگاه ) است. مدیر می‌تواند برای هر کلاینت حساب کاربری اختصاصی ایجاد کرده و سطح دسترسی او را به‌صورت جداگانه تعیین یا تغییر دهد؛ برای مثال دسترسی به آپلود یا دانلود فایل را فعال یا غیرفعال کند. همچنین می‌توان برای هر کلاینت وظایف و تسک‌های مشخصی تعریف کرد تا مدیریت کاربران و پیگیری فعالیت‌های آن‌ها ساده‌تر شود.
+        </p>
+        <p>
+          رابط کاربری تحت وب Byte Box از طریق مرورگر اجرا می‌شود و نیازی به نصب برنامه یا نرم‌افزار اختصاصی ندارد. این محصول می‌تواند برای اشتراک‌گذاری و مدیریت فایل در محیط‌های کاری، مراکز خدماتی، مجموعه‌های مختلف و کاربردهای شخصی مورد استفاده قرار گیرد.
+        </p>
+      </div>
+
+
+
+        <!-- مشخصات فنی + ویژگی‌ها -->
+        <div class="detail-two-col">
+
+          <div class="detail-block" style="margin-bottom:0">
+            <h2>مشخصات فنی</h2>
+            <table class="specs-table">
+              <tr><th>ولتاژ کاری</th><td dir="ltr">5 V</td></tr>
+              <tr><th>جریان مصرفی</th><td dir="ltr">200 mA</td></tr>
+              <tr><th>ابعاد</th><td dir="ltr">11 cm* 8 cm * 4cm</td></tr>
+              <tr><th>وزن</th><td dir="ltr">250 g</td></tr>
+              <tr><th>دمای کاری</th><td dir="ltr">−20°C - +50°C</td></tr>
+              <tr><th>رابط اتصال</th><td dir="ltr">Type-C</td></tr>
+              <!-- <tr><th>استاندارد</th><td>—</td></tr> -->
+            </table>
+          </div>
+
+          <div class="detail-block" style="margin-bottom:0">
+            <h2>ویژگی‌های کلیدی</h2>
+            <ul class="feature-list">
+              <li>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                تبدیل انواع حافظه به سرور فایل بی‌سیم
+              </li>
+              <li>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                دسترسی محلی بدون نیاز به اینترنت و امکان مدیریت از راه دور
+              </li>
+              <li>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                تعریف کلاینت‌ها (کاربران یا دستگاه‌های متصل) با دسترسی‌های اختصاصی
+              </li>
+              <li>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                امکان تعریف و مدیریت تسک برای هر کلاینت
+              </li>
+              <li>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                مدیریت فایل‌ها از طریق مرورگر بدون نیاز به نصب نرم‌افزار
+              </li>
+            </ul>
+          </div>
+
+
+        </div>
+
+        <!-- تصاویر بیشتر -->
+        <div class="detail-block" style="margin-top:64px">
+          <h2>تصاویر بیشتر</h2>
+          <div class="more-images">
+            <div class="ph"><img src="image/BB/1.png" alt="تصویر بیشتر محصول"></div>
+            <div class="ph"><img src="image/BB/2.png" alt="تصویر بیشتر محصول"></div>
+            <div class="ph"><img src="image/BB/3.jpg" alt="تصویر بیشتر محصول"></div>
+            <div class="ph"><img src="image/BB/4.jpg" alt="تصویر بیشتر محصول"></div>
+            <div class="ph"><img src="image/BB/5.png" alt="تصویر بیشتر محصول"></div>
+            <div class="ph"><img src="image/BB/6.jpg" alt="تصویر بیشتر محصول"></div>
+          </div>
+        </div>
+
+        <!-- CTA پایین -->
+        <div class="detail-cta">
+          <h3>سوالی درباره این محصول دارید؟</h3>
+          <p>کارشناسان فنی ما آماده پاسخگویی به سوالات شما هستند.</p>
+          <a href="#contact" class="btn btn-primary">تماس با کارشناس</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       صفحه جزئیات محصول ۲
+       ============================================================ -->
+  <section class="product-view" id="product-2">
+    <div class="container">
+
+      <nav class="breadcrumb">
+        <a href="#products">محصولات</a>
+        <span class="sep">/</span>
+        <span class="current">Patient Register</span>
+      </nav>
+
+      <div class="detail-hero">
+        <div class="detail-gallery">
+          <img class="gallery-main" src="image/PR/1.png" alt="تصویر اصلی محصول">
+          <div class="gallery-thumbs">
+            <div class="ph"><img src="image/PR/2.png" alt="تصویر محصول"></div>
+            <div class="ph"><img src="image/PR/3.png" alt="تصویر محصول"></div>
+            <!----<
+            <div class="ph"><img src="image/PR/4.png" alt="تصویر محصول"></div>
+            <div class="ph"><img src="image/PR/5.png" alt="تصویر محصول"></div>
+              -->
+          </div>
+        </div>
+
+        <div class="detail-info">
+          <span class="product-tag">مدیریت بیماران</span>
+          <h1>Patient Register</h1>
+          <p class="lead">
+            سامانه یکپارچه ثبت و مدیریت پرونده پزشکی بیماران و نوبت‌دهی؛
+            با دسترسی از طریق موبایل، تبلت یا کامپیوتر، کاملاً آفلاین و بدون نیاز به اینترنت.
+          </p>
+
+
+          <div class="detail-meta">
+            <div><span>قیمت</span><strong>تماس بگیرید</strong></div>
+            <div><span>گارانتی</span><strong>۱۸ ماه</strong></div>
+            <div><span>وضعیت</span><strong>قابل سفارش(تحویل 5 الی 7 روز کاری)</strong></div>
+          </div>
+
+          <div class="detail-actions">
+            <a href="#contact" class="btn btn-primary">درخواست قیمت</a>
+            <a href="#products" class="btn btn-ghost">بازگشت به محصولات</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-sections">
+
+        <div class="detail-block">
+          <h2>توضیحات کامل محصول</h2>
+          <p>
+            Patient Register یک سامانه یکپارچه برای ثبت و مدیریت اطلاعات بیماران، پرونده‌های پزشکی و برنامه‌ریزی نوبت‌هاست که با هدف ساده‌تر کردن مدیریت مطب، کلینیک و مراکز درمانی طراحی شده است. این سامانه به پزشک و پرسنل اجازه می‌دهد از طریق موبایل، تبلت یا کامپیوتر و با استفاده از Wi-Fi داخلی دستگاه، بدون نیاز به اینترنت به پنل مدیریتی دسترسی داشته باشند.
+          </p>
+          <p>
+            با استفاده از Patient Register می‌توان اطلاعات کامل بیماران را ثبت و به‌سرعت بر اساس نام یا کد ملی جست‌وجو کرد، تاریخچه مراجعات و جلسات درمانی را نگهداری کرد و برای هر جلسه خدمات و هزینه‌ها را ثبت نمود. همچنین امکان تعریف خدمات و تعرفه‌ها، محاسبه هزینه‌ها و تهیه گزارش درآمد و پرداختی‌ها بر اساس بیمار، نوع خدمت و بازه زمانی وجود دارد.
+          </p>
+          <p>
+            بخش نوبت‌دهی امکان ایجاد جدول روزانه و برنامه‌ریزی نوبت‌ها بر اساس تاریخ و ساعت را فراهم می‌کند. همچنین سیستم می‌تواند برای ثبت پرونده، یادآوری نوبت و تبریک تولد بیمار پیامک ارسال کند؛ این قابلیت با قرار دادن سیم‌کارت شخصی در دستگاه قابل استفاده است.
+          </p>
+          <p>
+            Patient Register امکان مدیریت فایل‌های پزشکی را نیز فراهم می‌کند. تصاویر مربوط به هر پرونده قابل ذخیره، حذف و تغییر نام هستند و سیستم از انواع فرمت‌های تصویر و ویدئو پشتیبانی می‌کند. تصاویر و ویدئوهای هر پرونده نیز از طریق پنل کاربری قابل مشاهده و پخش هستند.
+          </p>
+          <p>
+            اطلاعات سامانه روی حافظه USB ذخیره می‌شود و امکان انتقال و پشتیبان‌گیری آسان از داده‌ها وجود دارد. این سامانه کاملاً آفلاین طراحی شده و برای استفاده و مدیریت اطلاعات در شبکه داخلی، نیازی به اینترنت ندارد.
+          </p>
+        </div>
+
+
+        <div class="detail-two-col">
+          <div class="detail-block" style="margin-bottom:0">
+            <h2>مشخصات فنی</h2>
+            <table class="specs-table">
+              <tr><th>ولتاژ کاری</th><td dir="ltr">5 V</td></tr>
+              <tr><th>جریان مصرفی</th><td dir="ltr">200 mA</td></tr>
+              <tr><th>ابعاد</th><td dir="ltr">17 cm* 14 cm* 6cm</td></tr>
+              <tr><th>وزن</th><td dir="ltr">850 g</td></tr>
+              <tr><th>دمای کاری</th><td dir="ltr">−20°C - +50°C</td></tr>
+              <tr><th>رابط اتصال</th><td dir="ltr">Type-C</td></tr>
+              <!-- <tr><th>استاندارد</th><td>—</td></tr> -->
+            </table>
+          </div>
+
+          <div class="detail-block" style="margin-bottom:0">
+          <h2>ویژگی‌های کلیدی</h2>
+          <ul class="feature-list">
+            <li>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              ثبت و مدیریت کامل اطلاعات و پرونده پزشکی بیماران
+            </li>
+            <li>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              برنامه‌ریزی و مدیریت خودکار نوبت‌ها بر اساس تاریخ و ساعت
+            </li>
+            <li>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              امکان ارسال پیامک به بیماران جهت یادآوری نوبت 
+            </li>
+            <li>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              مدیریت خدمات، تعرفه‌ها، هزینه‌ها و گزارش‌های مالی
+            </li>
+            <li>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              ذخیره و مدیریت تصاویر و ویدئوهای پزشکی هر پرونده
+            </li>
+            <li>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              عملکرد کاملاً آفلاین و دسترسی از طریق موبایل، تبلت و کامپیوتر
+            </li>
+          </ul>
+        </div>
+
+
+        <div class="detail-block" style="margin-top:64px">
+          <h2>تصاویر بیشتر</h2>
+          <div class="more-images">
+            <div class="ph"><img src="image/PR/1.png" alt="تصویر بیشتر محصول"></div>
+            <div class="ph"><img src="image/PR/2.png" alt="تصویر بیشتر محصول"></div>
+            <div class="ph"><img src="image/PR/3.png" alt="تصویر بیشتر محصول"></div>
+            </div>
+        </div>
+
+        <div class="detail-cta">
+          <h3>سوالی درباره این محصول دارید؟</h3>
+          <p>کارشناسان فنی ما آماده پاسخگویی به سوالات شما هستند.</p>
+          <a href="#contact" class="btn btn-primary">تماس با کارشناس</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       صفحه جزئیات محصول ۳
+       ============================================================ -->
+  <section class="product-view" id="product-3">
+    <div class="container">
+
+      <nav class="breadcrumb">
+        <a href="#products">محصولات</a>
+        <span class="sep">/</span>
+        <span class="current">e-call</span>
+      </nav>
+
+      <div class="detail-hero">
+        <div class="detail-gallery">
+          <img class="gallery-main" src="image/EC/1.png" alt="تصویر اصلی محصول">
+          <div class="gallery-thumbs">
+            <div class="ph"><img src="image/EC/2.png" alt="تصویر محصول"></div>
+          </div>
+        </div>
+
+        <div class="detail-info">
+          <span class="product-tag">مدیریت بیماران</span>
+          <h1>e-call</h1>
+          <p class="lead">
+            سیستم مدیریت و فراخوان نوبت بیماران با نمایش نام و نوبت روی نمایشگر سالن انتظار و پخش فراخوان صوتی فارسی؛
+              قابل کنترل از طریق موبایل، تبلت یا کامپیوتر.
+          </p>
+
+
+          <div class="detail-meta">
+            <div><span>قیمت</span><strong>تماس بگیرید</strong></div>
+            <div><span>گارانتی</span><strong>۱۸ ماه</strong></div>
+            <div><span>وضعیت</span><strong>قابل سفارش (تحویل 5 تا 7 روز کاری)</strong></div>
+          </div>
+
+          <div class="detail-actions">
+            <a href="#contact" class="btn btn-primary">درخواست قیمت</a>
+            <a href="#products" class="btn btn-ghost">بازگشت به محصولات</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-sections">
+
+        <div class="detail-block">
+          <h2>توضیحات کامل محصول</h2>
+          <p>
+            e-call یک سیستم مدیریت و نمایش نوبت بیماران است که برای ایجاد نظم بیشتر در سالن انتظار و ساده‌تر کردن فرآیند فراخوان طراحی شده است. پرسنل می‌توانند نام بیماران را از طریق پنل تحت وب و با استفاده از موبایل، تبلت یا کامپیوتر ثبت کنند. پس از ثبت اولیه، نیازی به وارد کردن مجدد نام بیمار هنگام فراخوانی نیست و پرسنل تنها با فشردن دکمه «بیمار بعدی»، نوبت بعدی را اعلام می‌کنند.
+          </p>
+          <p>
+            نام بیمار فراخوان‌شده روی نمایشگر سالن انتظار نمایش داده می‌شود و امکان نمایش <strong>۱۰ بیمار بعدی</strong> نیز وجود دارد تا مراجعه‌کنندگان بتوانند ترتیب نوبت‌های پیش‌رو را مشاهده کنند. سیستم در حالت بدون اینترنت امکان نمایش نوبت‌ها را فراهم می‌کند و در صورت اتصال به اینترنت، قابلیت <strong>فراخوان صوتی بیمار</strong> نیز فعال می‌شود.
+          </p>
+          <p>
+            e-call به‌صورت <strong>Plug &amp; Play</strong> طراحی شده و راه‌اندازی آن ساده است. دستگاه با استفاده از کابل <strong>HDMI</strong> به نمایشگر یا تلویزیون متصل می‌شود و پس از اتصال، سیستم آماده استفاده است؛ بنابراین برای راه‌اندازی آن به تجهیزات یا تنظیمات پیچیده‌ای نیاز نیست.
+          </p>
+          <p>
+            e-call امکان مدیریت اتاق‌های مختلف پزشکان و صف انتظار هر اتاق را فراهم می‌کند. همچنین امکان پخش دوره‌ای موسیقی و پیام ضبط‌شده و شخصی‌سازی رنگ‌بندی، نوع و اندازه فونت و نحوه نمایش محتوای نمایشگر وجود دارد.
+          </p>
+          <p>
+            کنترل سیستم از طریق پنل تحت وب و با استفاده از موبایل، تبلت یا کامپیوتر انجام می‌شود. این سیستم برای کلینیک‌ها، درمانگاه‌ها، مراکز تصویربرداری و آزمایشگاه‌ها طراحی شده و با کاهش نیاز به صدا زدن بیماران، به ایجاد نظم بیشتر و کاهش بار کاری پرسنل کمک می‌کند.
+          </p>
+        </div>
+
+        <div class="detail-two-col">
+          <div class="detail-block" style="margin-bottom:0">
+            <h2>مشخصات فنی</h2>
+            <table class="specs-table">
+              <tr><th>ولتاژ کاری</th><td dir="ltr">5 V</td></tr>
+              <tr><th>جریان مصرفی</th><td dir="ltr">200 mA</td></tr>
+              <tr><th>ابعاد</th><td dir="ltr">11 cm* 6 cm* 2cm</td></tr>
+              <tr><th>وزن</th><td dir="ltr">250 g</td></tr>
+              <tr><th>دمای کاری</th><td dir="ltr">−20°C - +50°C</td></tr>
+              <tr><th>رابط اتصال</th><td dir="ltr">Type-C</td></tr>
+              <!-- <tr><th>استاندارد</th><td>—</td></tr> -->
+            </table>
+          </div>
+          <div class="detail-block" style="margin-bottom:0">
+            <h2>ویژگی‌های کلیدی</h2>
+            <ul class="feature-list">
+              <li>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                ثبت یک‌باره نام بیماران و فراخوان با دکمه «بیمار بعدی»
+              </li>
+              <li>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                نمایش بیمار فراخوان‌شده و ۱۰ بیمار بعدی روی نمایشگر
+              </li>
+              <li>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                فراخوان صوتی فارسی در صورت اتصال به اینترنت
+              </li>
+              <li>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                مدیریت اتاق‌ها و صف‌های مختلف پزشکان
+              </li>
+              <li>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                راه‌اندازی Plug &amp; Play با اتصال HDMI و کنترل از موبایل، تبلت یا کامپیوتر
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="detail-block" style="margin-top:64px">
+          <h2>تصاویر بیشتر</h2>
+          <div class="more-images">
+            <div class="ph"><img src="image/EC/1.png" alt="تصویر بیشتر محصول"></div>
+            <div class="ph"><img src="image/EC/2.png" alt="تصویر بیشتر محصول"></div>
+          </div>
+        </div>
+
+        <div class="detail-cta">
+          <h3>سوالی درباره این محصول دارید؟</h3>
+          <p>کارشناسان فنی ما آماده پاسخگویی به سوالات شما هستند.</p>
+          <a href="#contact" class="btn btn-primary">تماس با کارشناس</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
       <div>
-        <h1>Byte Box</h1>
-        <p> اولین محصول شرکت eleXify که به شما این امکان را میدهد اطلاعات فلش مموری خود را به صورت ایمن و سریع مدیریت کنید و یا با دیگران به اشتراک بگذارید</p>
-        <div class="hero-buttons">
-          <a href="#features" class="btn btn-primary">مشاهده ویژگی‌ها</a>
-          <a href="#how-to-use" class="btn btn-outline">نحوه استفاده</a>
-          <a href="#contact" class="btn btn-outline">تماس با ما</a>
+        <a href="#" class="logo">
+          <span class="logo-mark">
+          <!--  <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="7" y="7" width="10" height="10" rx="2"/>
+              <path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/>
+            </svg>
+          -->
+          </span>
+           رهپویان فناوری آمارد 
+        </a>
+        <p class="footer-about">
+          طراحی، تولید و عرضه قطعات و ماژول‌های الکترونیکی صنعتی با تمرکز بر کیفیت،
+          دقت و پشتیبانی فنی.
+        </p>
+        <div class="socials">
+          <a href="#" aria-label="اینستاگرام">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="لینکدین">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="4"/>
+              <path d="M8 10.5V17M8 7.2v.01M12 17v-3.6a2.2 2.2 0 014.4 0V17"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="وب‌سایت">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M3 12h18M12 3c3 3.5 3 14.5 0 18-3-3.5-3-14.5 0-18z"/>
+            </svg>
+          </a>
         </div>
       </div>
 
-      <div class="hero-image">
-        <img src="images/bytebox/1.png" alt="محصول اصلی Byte Box">
-      </div>
-    </div>
-  </header>
-
-  <!-- ویژگی‌ها -->
-  <section id="features">
-    <div class="container">
-      <div class="section-title">
-        <h2>ویژگی‌های Byte Box</h2>
-        </div>
-
-      <div class="features">
-        <div class="feature">
-          <h3>مدیریت تمام فرمت‌ها</h3>
-          <p>پشتیبانی از انواع فلش مموری با فرمت‌های مختلف و امکان مدیریت فایل‌ها بدون محدودیت.</p>
-        </div>
-        <div class="feature">
-          <h3>هات اسپات داخلی</h3>
-          <p>اتصال مستقیم به Byte Box از طریق هات اسپات داخلی، بدون نیاز به اینترنت یا شبکه خارجی.</p>
-        </div>
-        <div class="feature">
-          <h3>رابط وب پیشرفته</h3>
-          <p>صفحه وب اختصاصی که به راحتی می‌توانید به تمام فایل‌ها دسترسی داشته باشید و عملیات دانلود، آپلود، حذف و تغییر نام فایل‌ها را انجام دهید.</p>
-        </div>
-        <div class="feature">
-          <h3>شخصی‌سازی نام هات اسپات</h3>
-          <p>امکان تغییر نام هات اسپات به دلخواه، برای شناسایی سریع‌تر دستگاه در میان چندین شبکه.</p>
-        </div>
-        <div class="feature">
-          <h3>عملیات فایل بدون اینترنت</h3>
-          <p>تمام عملیات مدیریت فایل‌ها از جمله دانلود، آپلود، تغییر نام و حذف بدون نیاز به اتصال اینترنت انجام می‌شود.</p>
-        </div>
-        <div class="feature">
-          <h3>امکان استفاده همزمان چندین کاربر</h3>
-            <P>این امکان وجود دارد که همزمان چندین کاربر به دستگاه متصل شده و فایل های موجود در مموری را کنترل کنند . همچنین تعداد افراد متصل شده در بخش تنظیمات قابل مشاهده است</P>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- نحوه استفاده از Byte Box -->
-  <section id="how-to-use">
-    <div class="container">
-      <div class="section-title">
-        <h2>نحوه استفاده از Byte Box</h2>
-        <p>مراحل استفاده از دستگاه Byte Box به صورت ساده و قدم‌به‌قدم</p>
+      <div>
+        <h4>دسترسی سریع</h4>
+        <ul class="footer-links">
+          <li><a href="#products">محصولات</a></li>
+          <li><a href="#features">مزایا</a></li>
+          <li><a href="#about">درباره ما</a></li>
+          <li><a href="#contact">تماس با ما</a></li>
+        </ul>
       </div>
 
-      <div class="features">
-        
-        <!-- مرحله 1 -->
-        <div class="feature">
-          <h3>مرحله ۱: اتصال دستگاه</h3>
-          <p>
-            در این مرحله دستگاه Byte Box را به منبع تغذیه 5 ولت حد اقل 2 آمپر متصل کنید و منتظر بمانید تا روشن شود.
-          </p>
-          <div class="gallery-item" style="margin-top:15px;">
-            <img src="images/bytebox/2.png" alt="مرحله اول استفاده از Byte Box">
-          </div>
-        </div>
+      <div>
+        <h4>خدمات</h4>
+        <ul class="footer-links">
+          <li><a href="#">طراحی مدار</a></li>
+          <li><a href="#">تولید سفارشی</a></li>
+          <li><a href="#">مشاوره فنی</a></li>
+          <li><a href="#">پشتیبانی محصولات</a></li>
+        </ul>
+      </div>
 
-        <!-- مرحله 2 -->
-        <div class="feature">
-          <h3>مرحله ۲: اتصال به هات‌اسپات</h3>
-          <p>
-            به هات‌اسپات داخلی Byte Box متصل شوید. نام و رمز عبور در دفترچه همراه دستگاه موجود می باشد که بعدا در بخش تنظیمات دستگاه می‌توانید نام و رمز عبور را دهید.
-          </p>
-          <div class="gallery-item" style="margin-top:15px;">
-            <img src="images/bytebox/2.png" alt="اتصال به هات اسپات Byte Box">
-          </div>
-        </div>
-
-        <!-- مرحله 3 -->
-        <div class="feature">
-          <h3>مرحله ۳: ورود به پنل وب</h3>
-          <p>
-            با وارد کردن آدرس مشخص‌شده در دفترچه راهنما محصول، وارد رابط وب Byte Box شوید و فایل‌ها را مدیریت کنید.
-          </p>
-          <div class="gallery-item" style="margin-top:15px;">
-            <img src="images/bytebox/2.png" alt="رابط وب Byte Box">
-          </div>
-        </div>
-
-        <!-- مرحله 4 -->
-        <div class="feature">
-          <h3>مرحله ۴: مدیریت فایل‌ها</h3>
-          <p>
-            عملیات دانلود، آپلود، حذف و تغییر نام فایل‌ها را به‌راحتی و بدون اینترنت انجام دهید.
-          </p>
-          <div class="gallery-item" style="margin-top:15px;">
-            <img src="images/bytebox/2.png" alt="مدیریت فایل‌ها در Byte Box">
-          </div>
-        </div>
-
+      <div>
+        <h4>اطلاعات تماس</h4>
+        <ul class="footer-links">
+          <li>تلفن: 09114158463</li>
+          <li>ایمیل: elexify.co@gmail.com</li>
+          <li>مازندران، آمل، خ امام رضا(ع)، مرکز رشد و فناوری آمل</li>
+        </ul>
       </div>
     </div>
-  </section>
 
-
-
-
-
-
-  <!-- گالری -->
-  <section>
-    <div class="container">
-      <div class="section-title">
-        <h2>گالری محصول</h2>
-        
-      </div>
-
-      <!-- اسلایدر Swiper -->
-      <div class="swiper product-swiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide"><img src="images/bytebox/1.png" alt="Byte Box ۱"></div>
-          <div class="swiper-slide"><img src="images/bytebox/2.png" alt="Byte Box ۲"></div>
-          <div class="swiper-slide"><img src="images/bytebox/3.png" alt="Byte Box ۳"></div>
-        </div>
-
-        <!-- Navigation -->
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-
-        <!-- Pagination -->
-        <div class="swiper-pagination"></div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- تماس با ما -->
-  <section id="contact">
-  <div class="container contact" dir="ltr" lang="en">
-    <div class="section-title">
-      <h2> :تماس با ما </h2>
-      <p>📧 Email: eleXify.co@gmail.com</p>
-      <p>📸 Instagram: <a href="https://www.instagram.com/eleXify.co" target="_blank">@eleXify.co</a></p>
-      <p>💬 Telegram: <a href="https://t.me/eleXify" target="_blank">@eleXify</a></p>
+    <div class="footer-bottom">
+      <span>© ۱۴۰۵ رهپویان فناوری آمارد — تمامی حقوق محفوظ است.</span>
+      <span>powered by eleXify</span>
     </div>
   </div>
-</section>
+</footer>
 
-
-<div style="display:none">
-Byte Box by eleXify – ByteBox – bytrbox – محصول مدیریت فلش مموری شرکت eleXify
-</div>
-
-  <!-- فوتر -->
-  <footer style="padding: 40px 20px; text-align: center; color: #9ca3af; border-top: 1px solid #1f2933; font-family: 'Segoe UI', sans-serif; font-size: 0.95rem; direction: ltr;">
-    © 2025 eleXify. All rights reserved. <br>
-    Designed & Developed by eleXify Team
-  </footer>
-
-
-
-  <script>
-    function closeNotice() {
-      document.getElementById('siteNotice').style.display = 'none';
-    }
-</script>
-<!-- Swiper CSS -->
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
-/>
-
-<!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <script>
-  const swiper = new Swiper('.product-swiper', {
-    loop: true,
-    spaceBetween: 20,
-    slidesPerView: 1,
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    breakpoints: {
-      640: {
-        slidesPerView: 1,
-      },
-      768: {
-        slidesPerView: 2,
-      },
-      1024: {
-        slidesPerView: 3,
-      },
-    },
+/* ============================================================
+   هدر: افزودن کلاس هنگام اسکرول
+   ============================================================ */
+const header = document.getElementById('header');
+const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 10);
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+/* ============================================================
+   منوی موبایل
+   ============================================================ */
+const navToggle = document.getElementById('navToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+
+navToggle.addEventListener('click', () => {
+  navToggle.classList.toggle('active');
+  mobileMenu.classList.toggle('open');
+});
+
+mobileMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navToggle.classList.remove('active');
+    mobileMenu.classList.remove('open');
   });
+});
+
+/* ============================================================
+   انیمیشن ظاهر شدن عناصر (فقط در نمای اصلی)
+   ============================================================ */
+const reveals = document.querySelectorAll('#mainView .reveal');
+
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 70);
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+  reveals.forEach(el => io.observe(el));
+} else {
+  reveals.forEach(el => el.classList.add('visible'));
+}
+
+/* ============================================================
+   روتر ساده برای نمایش صفحه جزئیات محصول
+   آدرس‌ها:
+     #product-1  → صفحه جزئیات محصول اول
+     #product-2  → صفحه جزئیات محصول دوم
+     #product-3  → صفحه جزئیات محصول سوم
+     سایر هش‌ها  → بازگشت به نمای اصلی + اسکرول به بخش
+   ============================================================ */
+const mainView   = document.getElementById('mainView');
+const productViews = document.querySelectorAll('.product-view');
+
+function showProduct(id){
+  // پنهان کردن نمای اصلی
+  mainView.style.display = 'none';
+
+  // فعال کردن صفحه مربوطه
+  productViews.forEach(pv => {
+    pv.classList.toggle('active', pv.id === 'product-' + id);
+  });
+
+  // رفتن به بالای صفحه (بدون انیمیشن اسکرول)
+  const html = document.documentElement;
+  const prev = html.style.scrollBehavior;
+  html.style.scrollBehavior = 'auto';
+  window.scrollTo(0, 0);
+  requestAnimationFrame(() => { html.style.scrollBehavior = prev; });
+}
+
+function showMain(targetHash){
+  const wasProduct = !!document.querySelector('.product-view.active');
+
+  mainView.style.display = '';
+  productViews.forEach(pv => pv.classList.remove('active'));
+
+  if (targetHash && targetHash.length > 1){
+    const id = targetHash.slice(1);
+    const target = document.getElementById(id);
+    if (target){
+      // اگر از صفحه محصول برگشتیم، در یک فریم بعد اسکرول نرم انجام بده
+      setTimeout(() => {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, wasProduct ? 30 : 0);
+    }
+  } else if (wasProduct) {
+    // بازگشت از صفحه محصول بدون هدف مشخص → بالای صفحه
+    const html = document.documentElement;
+    const prev = html.style.scrollBehavior;
+    html.style.scrollBehavior = 'auto';
+    window.scrollTo(0, 0);
+    requestAnimationFrame(() => { html.style.scrollBehavior = prev; });
+  }
+}
+
+function route(){
+  const hash = window.location.hash || '';
+  const match = hash.match(/^#product-(\d+)$/);
+
+  if (match){
+    showProduct(match[1]);
+  } else {
+    showMain(hash);
+  }
+}
+
+// اجرای اولیه و هر بار تغییر هش
+window.addEventListener('hashchange', route);
+route();
 </script>
 
 </body>

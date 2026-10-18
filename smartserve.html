@@ -130,19 +130,7 @@ ul{list-style:none}
 .btn-block{width:100%}
 
 /* ===================================================
-   3) پلیس‌هولدرها (جای تصاویر)
-   =================================================== */
-.ph{
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
-  background:var(--surface);border:1px dashed #d5dae2;border-radius:var(--radius);
-  color:#9aa3af;font-size:13px;font-weight:500;text-align:center;padding:20px;
-  transition:border-color .25s,color .25s,background .25s;
-}
-.ph svg{opacity:.55}
-.ph span{line-height:1.5}
-
-/* ===================================================
-   4) هدر
+   3) هدر
    =================================================== */
 .header{
   position:sticky;top:0;z-index:100;
@@ -157,7 +145,8 @@ ul{list-style:none}
 .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18.5px;letter-spacing:-.3px}
 
 .logo-main{display:flex;flex-direction:column;align-items:center;gap:4px}
-.logo-legal{font-size:11px;color:var(--text);font-weight:600;white-space:nowrap}.logo-box{width:190px;height:70px;border-radius:12px;background:var(--accent);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.15;box-shadow:0 10px 24px -14px rgba(37,99,235,.75)}
+.logo-legal{font-size:11px;color:var(--text);font-weight:600;white-space:nowrap}
+.logo-box{width:190px;height:70px;border-radius:12px;background:var(--accent);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.15;box-shadow:0 10px 24px -14px rgba(37,99,235,.75)}
 .logo-box strong{font-size:30px;font-weight:800;letter-spacing:1px;direction:ltr}
 .logo-box small{font-size:10px;font-weight:500;margin-top:3px;white-space:nowrap}
 
@@ -192,7 +181,7 @@ ul{list-style:none}
 .mobile-menu .btn{margin-top:14px}
 
 /* ===================================================
-   5) فوتر
+   4) فوتر
    =================================================== */
 .footer{background:#0d1117;color:#8b95a3;padding:76px 0 0;font-size:14.5px}
 .footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:48px;padding-bottom:60px}
@@ -218,10 +207,12 @@ ul{list-style:none}
 }
 
 /* ===================================================
-   6) انیمیشن ظاهر شدن
+   5) انیمیشن ظاهر شدن
    =================================================== */
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
 .reveal.visible{opacity:1;transform:none}
+
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
@@ -230,7 +221,7 @@ ul{list-style:none}
 }
 
 /* ===================================================
-   7) صفحه جزئیات محصول
+   6) صفحه جزئیات محصول
    =================================================== */
 .product-view{display:none}
 .product-view.active{display:block;animation:fadeUp .5s ease}
@@ -250,15 +241,57 @@ ul{list-style:none}
   padding:28px 0 76px;align-items:start;
 }
 
+/* ---------- گالری جزئیات ---------- */
 .detail-gallery{position:relative}
-.gallery-main{aspect-ratio:4/3;width:100%;border-radius:22px}
+
+.gallery-main{
+  position:relative;
+  aspect-ratio:4/3;
+  width:100%;
+  border-radius:22px;
+  overflow:hidden;
+  background:linear-gradient(135deg,#eef2f7,#e2e8f0);
+  cursor:zoom-in;
+  outline:none;
+}
+.gallery-main:focus-visible{box-shadow:0 0 0 3px var(--accent-soft)}
+.gallery-main img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .5s ease;
+  animation:fadeIn .35s ease;
+}
+.gallery-main:hover img{transform:scale(1.04)}
+
+.gallery-zoom-hint{
+  position:absolute;bottom:14px;inset-inline-end:14px;
+  width:40px;height:40px;border-radius:12px;
+  background:rgba(13,17,23,.55);color:#fff;
+  display:grid;place-items:center;
+  opacity:0;transition:.25s;
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  pointer-events:none;
+}
+.gallery-main:hover .gallery-zoom-hint,
+.gallery-main:focus-visible .gallery-zoom-hint{opacity:1}
+
 .gallery-thumbs{
   display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px;
 }
-.gallery-thumbs .ph{aspect-ratio:1;border-radius:14px;padding:8px;font-size:11px;cursor:pointer;transition:.25s}
-.gallery-thumbs .ph:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
-.gallery-thumbs .ph svg{width:20px;height:20px}
+.thumb{
+  position:relative;aspect-ratio:1;border-radius:14px;overflow:hidden;
+  padding:0;border:2px solid transparent;background:var(--surface);
+  cursor:pointer;transition:border-color .25s, transform .25s, box-shadow .25s;
+}
+.thumb img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .45s ease;
+}
+.thumb:hover{border-color:#c9d2de;transform:translateY(-2px)}
+.thumb:hover img{transform:scale(1.06)}
+.thumb.active{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.thumb.active img{transform:scale(1.02)}
 
+/* ---------- اطلاعات جزئیات ---------- */
 .detail-info .product-tag{margin-bottom:16px}
 .detail-info h1{
   font-size:clamp(24px,3.2vw,36px);font-weight:800;line-height:1.4;
@@ -275,7 +308,7 @@ ul{list-style:none}
 
 .detail-actions{display:flex;gap:12px;flex-wrap:wrap}
 
-/* بخش‌های محتوای جزئیات */
+/* ---------- بخش‌های محتوای جزئیات ---------- */
 .detail-sections{padding:8px 0 40px}
 .detail-block{margin-bottom:64px}
 .detail-block h2{
@@ -311,9 +344,36 @@ ul{list-style:none}
 .feature-list li:hover{border-color:#dbe0e7;box-shadow:0 12px 24px -18px rgba(13,17,23,.25)}
 .feature-list svg{color:var(--accent);flex-shrink:0;margin-top:5px}
 
-.more-images{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.more-images .ph{aspect-ratio:4/3}
+/* ---------- شبکه‌ی تصاویر بیشتر ---------- */
+.more-images{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+  gap:18px;
+}
+.shot{
+  position:relative;aspect-ratio:4/3;border-radius:16px;overflow:hidden;
+  padding:0;border:1px solid var(--border);background:var(--surface);
+  cursor:zoom-in;transition:transform .3s, box-shadow .3s, border-color .3s;
+}
+.shot img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .5s ease;
+}
+.shot:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:#dbe0e7}
+.shot:hover img{transform:scale(1.07)}
+.shot-zoom{
+  position:absolute;top:10px;inset-inline-end:10px;
+  width:34px;height:34px;border-radius:10px;
+  background:rgba(13,17,23,.6);color:#fff;
+  display:grid;place-items:center;
+  opacity:0;transition:.25s;pointer-events:none;
+  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+}
+.shot:hover .shot-zoom,
+.shot:focus-visible .shot-zoom{opacity:1}
+.shot:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
+/* ---------- CTA پایین ---------- */
 .detail-cta{
   background:var(--surface);border:1px solid var(--border);border-radius:24px;
   padding:44px 40px;text-align:center;margin-top:20px;
@@ -322,7 +382,7 @@ ul{list-style:none}
 .detail-cta p{color:var(--muted);font-size:15px;margin-bottom:26px}
 
 /* ===================================================
-   8) کارت‌های پنل (بخش سه پنل یکپارچه)
+   7) کارت‌های پنل
    =================================================== */
 .panels-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .panel-card{
@@ -341,6 +401,67 @@ ul{list-style:none}
 .panel-card ul li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0}
 
 /* ===================================================
+   8) لایت‌باکس (نمایش بزرگ تصویر)
+   =================================================== */
+.lightbox{
+  position:fixed;inset:0;z-index:9999;
+  background:rgba(8,11,17,.94);
+  display:flex;align-items:center;justify-content:center;
+  padding:60px 80px;
+  opacity:0;visibility:hidden;
+  transition:opacity .3s ease, visibility .3s ease;
+  overscroll-behavior:contain;
+}
+.lightbox.open{opacity:1;visibility:visible}
+
+.lightbox-stage{
+  position:relative;
+  max-width:100%;max-height:100%;
+  display:flex;align-items:center;justify-content:center;
+}
+.lightbox img{
+  max-width:100%;max-height:calc(100vh - 120px);
+  width:auto;height:auto;
+  object-fit:contain;
+  border-radius:12px;
+  box-shadow:0 30px 80px -20px rgba(0,0,0,.85);
+  user-select:none;
+  animation:fadeIn .3s ease;
+}
+
+.lightbox-close,
+.lightbox-nav{
+  position:absolute;
+  width:48px;height:48px;border-radius:50%;
+  background:rgba(255,255,255,.1);color:#fff;
+  display:grid;place-items:center;
+  transition:background .2s, transform .2s;
+  z-index:2;
+}
+.lightbox-close:hover,
+.lightbox-nav:hover{background:rgba(255,255,255,.24);transform:scale(1.06)}
+.lightbox-close:focus-visible,
+.lightbox-nav:focus-visible{outline:2px solid #fff;outline-offset:3px}
+
+.lightbox-close{top:18px;inset-inline-end:18px}
+.lightbox-prev{left:18px;top:50%;transform:translateY(-50%)}
+.lightbox-next{right:18px;top:50%;transform:translateY(-50%)}
+.lightbox-prev:hover{transform:translateY(-50%) scale(1.06)}
+.lightbox-next:hover{transform:translateY(-50%) scale(1.06)}
+
+.lightbox-counter{
+  position:absolute;bottom:18px;left:50%;transform:translateX(-50%);
+  color:#fff;font-size:13px;font-weight:500;
+  background:rgba(0,0,0,.55);
+  padding:6px 18px;border-radius:100px;
+  direction:ltr;
+  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+  font-variant-numeric:tabular-nums;
+}
+
+body.lightbox-open{overflow:hidden}
+
+/* ===================================================
    9) ریسپانسیو
    =================================================== */
 @media (max-width:1024px){
@@ -351,7 +472,6 @@ ul{list-style:none}
 @media (max-width:980px){
   .footer-grid{grid-template-columns:1fr 1fr;gap:40px}
   .detail-two-col{grid-template-columns:1fr;gap:40px}
-  .more-images{grid-template-columns:repeat(2,1fr)}
 }
 
 @media (max-width:900px){
@@ -366,7 +486,19 @@ ul{list-style:none}
   .footer-grid{grid-template-columns:1fr}
   .gallery-thumbs{grid-template-columns:repeat(4,1fr);gap:10px}
   .detail-meta{grid-template-columns:1fr 1fr;gap:14px}
+  .more-images{grid-template-columns:repeat(2,1fr);gap:12px}
+  .lightbox{padding:20px 12px}
+  .lightbox img{max-height:calc(100vh - 80px);border-radius:8px}
+  .lightbox-close{top:10px;inset-inline-end:10px;width:42px;height:42px}
+  .lightbox-nav{width:42px;height:42px}
+  .lightbox-prev{left:8px}
+  .lightbox-next{right:8px}
+  .lightbox-counter{bottom:12px;font-size:12px;padding:5px 14px}
+}
+
+@media (max-width:420px){
   .more-images{grid-template-columns:1fr}
+  .gallery-thumbs{grid-template-columns:repeat(3,1fr)}
 }
 </style>
 </head>
@@ -426,21 +558,29 @@ ul{list-style:none}
       <!-- بخش هیرو جزئیات -->
       <div class="detail-hero">
         <div class="detail-gallery">
-          <div class="ph gallery-main" id="galleryMain">
-            <svg width="88" height="88" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="3" width="7" height="9" rx="1.5"/>
-              <rect x="14" y="3" width="7" height="5" rx="1.5"/>
-              <rect x="14" y="12" width="7" height="9" rx="1.5"/>
-              <rect x="3" y="16" width="7" height="5" rx="1.5"/>
-            </svg>
-            <span id="galleryMainLabel">داشبورد مدیر</span>
+          <div class="gallery-main" id="galleryMain" role="button" tabindex="0"
+               aria-label="بزرگ کردن تصویر داشبورد مدیر">
+            <img id="galleryMainImg" src="image/smartserve/1.png" alt="داشبورد مدیر">
+            <span class="gallery-zoom-hint" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+              </svg>
+            </span>
           </div>
-          <div class="gallery-thumbs">
-            <div class="ph active"><img src="image/smartserve/1.png" alt="تصویر محصول"></div>
-            <div class="ph"><img src="image/smartserve/2.png" alt="تصویر محصول"></div>
-            <div class="ph"><img src="image/smartserve/3.png" alt="تصویر محصول"></div>
-            <div class="ph"><img src="image/smartserve/4.png" alt="تصویر محصول"></div>
-            
+
+          <div class="gallery-thumbs" id="galleryThumbs">
+            <button type="button" class="thumb active" data-full="image/smartserve/1.png" data-alt="داشبورد مدیر">
+              <img src="image/smartserve/1.png" alt="داشبورد مدیر" loading="lazy" decoding="async">
+            </button>
+            <button type="button" class="thumb" data-full="image/smartserve/2.png" data-alt="پنل پرسنل">
+              <img src="image/smartserve/2.png" alt="پنل پرسنل" loading="lazy" decoding="async">
+            </button>
+            <button type="button" class="thumb" data-full="image/smartserve/3.png" data-alt="منوی مشتری">
+              <img src="image/smartserve/3.png" alt="منوی مشتری" loading="lazy" decoding="async">
+            </button>
+            <button type="button" class="thumb" data-full="image/smartserve/4.png" data-alt="گزارش مالی">
+              <img src="image/smartserve/4.png" alt="گزارش مالی" loading="lazy" decoding="async">
+            </button>
           </div>
         </div>
 
@@ -448,7 +588,7 @@ ul{list-style:none}
           <span class="product-tag">سیستم مدیریت یکپارچه کافه و رستوران</span>
           <h1>smartserve A1</h1>
           <p class="lead">
-            سیستم مدیریت کافه و رستوران با منوی دیجیتال QR، سبد خرید و ثبت سفارش 
+            سیستم مدیریت کافه و رستوران با منوی دیجیتال QR، سبد خرید و ثبت سفارش
             سه پنل کاربری مجزا (مدیر، پرسنل، مشتری)، مدیریت زنده سفارش‌ها و فراخوان گارسون،
             گزارش‌های مالی با تقویم شمسی و خروجی اکسل — همه به صورت کاملاً آفلاین  .
           </p>
@@ -599,7 +739,7 @@ ul{list-style:none}
               </li>
               <li>
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-                فراخوان گارسون  
+                فراخوان گارسون
               </li>
               <li>
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
@@ -625,25 +765,103 @@ ul{list-style:none}
         <!-- تصاویر بیشتر -->
         <div class="detail-block" style="margin-top:64px">
           <h2>نمای پنل‌ها</h2>
-          <div class="more-images">
-            <div class="ph"><img src="image/smartserve/1.png" alt="تصویر بیشتر محصول"></div>
-            <div class="ph"><img src="image/smartserve/2.png" alt="تصویر بیشتر محصول"></div>
-            <div class="ph"><img src="image/smartserve/3.png" alt="تصویر بیشتر محصول"></div>
-            <div class="ph"><img src="image/smartserve/4.png" alt="تصویر بیشتر محصول"></div>
-            <div class="ph"><img src="image/smartserve/5.png" alt="تصویر بیشتر محصول"></div>
-            <div class="ph"><img src="image/smartserve/6.png" alt="تصویر بیشتر محصول"></div>
-            <div class="ph"><img src="image/smartserve/7.png" alt="تصویر بیشتر محصول"></div>
-            <div class="ph"><img src="image/smartserve/8.png" alt="تصویر بیشتر محصول"></div>
-            <div class="ph"><img src="image/smartserve/9.png" alt="تصویر بیشتر محصول"></div>
-            <div class="ph"><img src="image/smartserve/10.png" alt="تصویر بیشتر محصول"></div>
-            <div class="ph"><img src="image/smartserve/11.png" alt="تصویر بیشتر محصول"></div>
-            <div class="ph"><img src="image/smartserve/12.png" alt="تصویر بیشتر محصول"></div>
-            <div class="ph"><img src="image/smartserve/13.png" alt="تصویر بیشتر محصول"></div>
-            <div class="ph"><img src="image/smartserve/14.png" alt="تصویر بیشتر محصول"></div>
-            <div class="ph"><img src="image/smartserve/15.png" alt="تصویر بیشتر محصول"></div>
-            <div class="ph"><img src="image/smartserve/16.png" alt="تصویر بیشتر محصول"></div>
-
-
+          <div class="more-images" id="moreImages">
+            <button type="button" class="shot" data-full="image/smartserve/1.png" data-alt="نمای پنل ۱">
+              <img src="image/smartserve/1.png" alt="نمای پنل ۱" loading="lazy" decoding="async">
+              <span class="shot-zoom" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </span>
+            </button>
+            <button type="button" class="shot" data-full="image/smartserve/2.png" data-alt="نمای پنل ۲">
+              <img src="image/smartserve/2.png" alt="نمای پنل ۲" loading="lazy" decoding="async">
+              <span class="shot-zoom" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </span>
+            </button>
+            <button type="button" class="shot" data-full="image/smartserve/3.png" data-alt="نمای پنل ۳">
+              <img src="image/smartserve/3.png" alt="نمای پنل ۳" loading="lazy" decoding="async">
+              <span class="shot-zoom" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </span>
+            </button>
+            <button type="button" class="shot" data-full="image/smartserve/4.png" data-alt="نمای پنل ۴">
+              <img src="image/smartserve/4.png" alt="نمای پنل ۴" loading="lazy" decoding="async">
+              <span class="shot-zoom" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </span>
+            </button>
+            <button type="button" class="shot" data-full="image/smartserve/5.png" data-alt="نمای پنل ۵">
+              <img src="image/smartserve/5.png" alt="نمای پنل ۵" loading="lazy" decoding="async">
+              <span class="shot-zoom" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </span>
+            </button>
+            <button type="button" class="shot" data-full="image/smartserve/6.png" data-alt="نمای پنل ۶">
+              <img src="image/smartserve/6.png" alt="نمای پنل ۶" loading="lazy" decoding="async">
+              <span class="shot-zoom" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </span>
+            </button>
+            <button type="button" class="shot" data-full="image/smartserve/7.png" data-alt="نمای پنل ۷">
+              <img src="image/smartserve/7.png" alt="نمای پنل ۷" loading="lazy" decoding="async">
+              <span class="shot-zoom" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </span>
+            </button>
+            <button type="button" class="shot" data-full="image/smartserve/8.png" data-alt="نمای پنل ۸">
+              <img src="image/smartserve/8.png" alt="نمای پنل ۸" loading="lazy" decoding="async">
+              <span class="shot-zoom" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </span>
+            </button>
+            <button type="button" class="shot" data-full="image/smartserve/9.png" data-alt="نمای پنل ۹">
+              <img src="image/smartserve/9.png" alt="نمای پنل ۹" loading="lazy" decoding="async">
+              <span class="shot-zoom" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </span>
+            </button>
+            <button type="button" class="shot" data-full="image/smartserve/10.png" data-alt="نمای پنل ۱۰">
+              <img src="image/smartserve/10.png" alt="نمای پنل ۱۰" loading="lazy" decoding="async">
+              <span class="shot-zoom" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </span>
+            </button>
+            <button type="button" class="shot" data-full="image/smartserve/11.png" data-alt="نمای پنل ۱۱">
+              <img src="image/smartserve/11.png" alt="نمای پنل ۱۱" loading="lazy" decoding="async">
+              <span class="shot-zoom" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </span>
+            </button>
+            <button type="button" class="shot" data-full="image/smartserve/12.png" data-alt="نمای پنل ۱۲">
+              <img src="image/smartserve/12.png" alt="نمای پنل ۱۲" loading="lazy" decoding="async">
+              <span class="shot-zoom" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </span>
+            </button>
+            <button type="button" class="shot" data-full="image/smartserve/13.png" data-alt="نمای پنل ۱۳">
+              <img src="image/smartserve/13.png" alt="نمای پنل ۱۳" loading="lazy" decoding="async">
+              <span class="shot-zoom" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </span>
+            </button>
+            <button type="button" class="shot" data-full="image/smartserve/14.png" data-alt="نمای پنل ۱۴">
+              <img src="image/smartserve/14.png" alt="نمای پنل ۱۴" loading="lazy" decoding="async">
+              <span class="shot-zoom" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </span>
+            </button>
+            <button type="button" class="shot" data-full="image/smartserve/15.png" data-alt="نمای پنل ۱۵">
+              <img src="image/smartserve/15.png" alt="نمای پنل ۱۵" loading="lazy" decoding="async">
+              <span class="shot-zoom" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </span>
+            </button>
+            <button type="button" class="shot" data-full="image/smartserve/16.png" data-alt="نمای پنل ۱۶">
+              <img src="image/smartserve/16.png" alt="نمای پنل ۱۶" loading="lazy" decoding="async">
+              <span class="shot-zoom" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </span>
+            </button>
           </div>
         </div>
 
@@ -731,6 +949,35 @@ ul{list-style:none}
   </div>
 </footer>
 
+<!-- ============================================================
+     لایت‌باکس (نمایش بزرگ تصویر)
+     ============================================================ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="نمایش بزرگ تصویر" aria-hidden="true">
+  <button type="button" class="lightbox-close" id="lightboxClose" aria-label="بستن">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 6L6 18M6 6l12 12"/>
+    </svg>
+  </button>
+
+  <button type="button" class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="تصویر قبلی">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 18l-6-6 6-6"/>
+    </svg>
+  </button>
+
+  <div class="lightbox-stage">
+    <img id="lightboxImg" src="" alt="">
+  </div>
+
+  <button type="button" class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="تصویر بعدی">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 18l6-6-6-6"/>
+    </svg>
+  </button>
+
+  <div class="lightbox-counter" id="lightboxCounter" aria-live="polite"></div>
+</div>
+
 <script>
 /* ============================================================
    هدر: افزودن کلاس هنگام اسکرول
@@ -762,7 +1009,6 @@ mobileMenu.querySelectorAll('a').forEach(link => {
    انیمیشن ظاهر شدن عناصر
    ============================================================ */
 const reveals = document.querySelectorAll('.reveal');
-
 if ('IntersectionObserver' in window) {
   const io = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
@@ -772,47 +1018,152 @@ if ('IntersectionObserver' in window) {
       }
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-
   reveals.forEach(el => io.observe(el));
 } else {
   reveals.forEach(el => el.classList.add('visible'));
 }
 
 /* ============================================================
-   گالری جزئیات محصول:
-   چون فعلاً از placeholder استفاده می‌کنیم، فقط آیکون و برچسب
-   اصلی بر اساس thumbnail کلیک‌شده عوض می‌شود. اگر بعداً تصاویر
-   واقعی اضافه کردید، کافی است منطق img را در همین بلوک جایگزین کنید.
+   گالری اصلی: کلیک روی thumbnail → تغییر تصویر اصلی
    ============================================================ */
-const GALLERY_ICONS = {
-  dashboard: '<svg width="88" height="88" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>',
-  menu:      '<svg width="88" height="88" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8M8 9h2"/></svg>',
-  staff:     '<svg width="88" height="88" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
-  report:    '<svg width="88" height="88" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>'
-};
+const galleryMain     = document.getElementById('galleryMain');
+const galleryMainImg  = document.getElementById('galleryMainImg');
+const galleryThumbsEl = document.getElementById('galleryThumbs');
+const thumbs          = galleryThumbsEl ? Array.from(galleryThumbsEl.querySelectorAll('.thumb')) : [];
+let currentThumbIndex = 0;
 
-document.querySelectorAll('.detail-gallery').forEach(gallery => {
-  const main = gallery.querySelector('.gallery-main');
-  const label = gallery.querySelector('#galleryMainLabel');
-  const thumbItems = gallery.querySelectorAll('.gallery-thumbs .ph');
-  if (!main || !thumbItems.length) return;
+function setMainImage(index){
+  if(!thumbs.length) return;
+  currentThumbIndex = (index + thumbs.length) % thumbs.length;
+  const t = thumbs[currentThumbIndex];
+  const src = t.dataset.full || (t.querySelector('img') && t.querySelector('img').src) || '';
+  const alt = t.dataset.alt || (t.querySelector('img') && t.querySelector('img').alt) || '';
+  if(galleryMainImg && src){
+    galleryMainImg.style.animation = 'none';
+    void galleryMainImg.offsetWidth;
+    galleryMainImg.src = src;
+    galleryMainImg.alt = alt;
+    galleryMainImg.style.animation = 'fadeIn .35s ease';
+  }
+  thumbs.forEach((el,i)=>el.classList.toggle('active', i === currentThumbIndex));
+  if(galleryMain) galleryMain.setAttribute('aria-label', 'بزرگ کردن تصویر ' + alt);
+}
 
-  thumbItems.forEach(item => {
-    item.addEventListener('click', () => {
-      thumbItems.forEach(t => t.classList.remove('active'));
-      item.classList.add('active');
+thumbs.forEach((thumb,i) => {
+  thumb.addEventListener('click', () => setMainImage(i));
+});
 
-      const iconKey = item.dataset.icon;
-      const labelText = item.dataset.label || '';
-      if (iconKey && GALLERY_ICONS[iconKey]) {
-        const oldLabel = label ? label.textContent : '';
-        main.innerHTML = GALLERY_ICONS[iconKey] + '<span id="galleryMainLabel">' + (labelText || oldLabel) + '</span>';
-        main.classList.remove('fade-in');
-        void main.offsetWidth;
-        main.classList.add('fade-in');
-      }
-    });
+/* ============================================================
+   لایت‌باکس
+   ============================================================ */
+const lightbox         = document.getElementById('lightbox');
+const lightboxImg      = document.getElementById('lightboxImg');
+const lightboxCounter  = document.getElementById('lightboxCounter');
+const lightboxClose    = document.getElementById('lightboxClose');
+const lightboxPrev     = document.getElementById('lightboxPrev');
+const lightboxNext     = document.getElementById('lightboxNext');
+
+let lbItems = [];
+let lbIndex = 0;
+let lastFocused = null;
+
+function openLightbox(items, startIndex){
+  const arr = Array.from(items || []);
+  if(!arr.length) return;
+  lbItems = arr;
+  lbIndex = Math.max(0, Math.min(startIndex || 0, lbItems.length - 1));
+  lastFocused = document.activeElement;
+
+  renderLightbox();
+  lightbox.classList.add('open');
+  lightbox.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('lightbox-open');
+
+  if(lightboxClose) lightboxClose.focus();
+}
+
+function renderLightbox(){
+  const item = lbItems[lbIndex];
+  if(!item) return;
+
+  const innerImg = item.querySelector ? item.querySelector('img') : null;
+  const src = item.dataset.full || (innerImg && innerImg.src) || '';
+  const alt = item.dataset.alt  || (innerImg && innerImg.alt)  || '';
+
+  lightboxImg.style.animation = 'none';
+  void lightboxImg.offsetWidth;
+  lightboxImg.src = src;
+  lightboxImg.alt = alt;
+  lightboxImg.style.animation = 'fadeIn .3s ease';
+
+  const many = lbItems.length > 1;
+  if(lightboxCounter){
+    lightboxCounter.textContent = many ? (lbIndex + 1) + ' / ' + lbItems.length : '';
+  }
+  if(lightboxPrev) lightboxPrev.style.visibility = many ? 'visible' : 'hidden';
+  if(lightboxNext) lightboxNext.style.visibility = many ? 'visible' : 'hidden';
+}
+
+function closeLightbox(){
+  lightbox.classList.remove('open');
+  lightbox.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('lightbox-open');
+  setTimeout(() => {
+    if(!lightbox.classList.contains('open')){
+      lightboxImg.src = '';
+      lightboxImg.alt = '';
+    }
+  }, 320);
+  if(lastFocused && typeof lastFocused.focus === 'function'){
+    try { lastFocused.focus(); } catch(e){}
+  }
+}
+
+function prevLightbox(){
+  if(lbItems.length < 2) return;
+  lbIndex = (lbIndex - 1 + lbItems.length) % lbItems.length;
+  renderLightbox();
+}
+function nextLightbox(){
+  if(lbItems.length < 2) return;
+  lbIndex = (lbIndex + 1) % lbItems.length;
+  renderLightbox();
+}
+
+if(lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+if(lightboxPrev)  lightboxPrev.addEventListener('click', prevLightbox);
+if(lightboxNext)  lightboxNext.addEventListener('click', nextLightbox);
+
+lightbox.addEventListener('click', (e) => {
+  if(e.target === lightbox) closeLightbox();
+});
+
+document.addEventListener('keydown', (e) => {
+  if(!lightbox.classList.contains('open')) return;
+  if(e.key === 'Escape'){ e.preventDefault(); closeLightbox(); }
+  else if(e.key === 'ArrowLeft'){ e.preventDefault(); prevLightbox(); }
+  else if(e.key === 'ArrowRight'){ e.preventDefault(); nextLightbox(); }
+});
+
+/* ============================================================
+   کلیک روی تصویر اصلی گالری → باز کردن لایت‌باکس
+   ============================================================ */
+if(galleryMain){
+  galleryMain.addEventListener('click', () => openLightbox(thumbs, currentThumbIndex));
+  galleryMain.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter' || e.key === ' '){
+      e.preventDefault();
+      openLightbox(thumbs, currentThumbIndex);
+    }
   });
+}
+
+/* ============================================================
+   شبکه‌ی تصاویر بیشتر → لایت‌باکس با ناوبری بین همان ۱۶ تصویر
+   ============================================================ */
+const moreShots = Array.from(document.querySelectorAll('#moreImages .shot'));
+moreShots.forEach((shot, i) => {
+  shot.addEventListener('click', () => openLightbox(moreShots, i));
 });
 </script>
 

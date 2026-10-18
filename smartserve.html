@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CafeSync A1 | سیستم مدیریت هوشمند کافه و رستوران eleXify</title>
+<meta name="description" content="smart serve A1 سیستم مدیریت یکپارچه کافه و رستوران؛ منوی دیجیتال با QR کد، پنل مدیر، پنل پرسنل، منوی مشتری، گزارش مالی با تقویم شمسی و خروجی اکسل، تم قابل سفارشی‌سازی و عملکرد کامل آفلاین روی رزبری‌پای." />
+<link rel="canonical" href="https://elexify.ir/cafesync.html" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="author" content="eleXify - رهپویان فناوری آمارد" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="product" />
+<meta property="og:site_name" content="eleXify" />
+<meta property="og:title" content="CafeSync A1 | سیستم مدیریت هوشمند کافه و رستوران eleXify" />
+<meta property="og:description" content="منوی دیجیتال QR، پنل مدیر، پنل پرسنل، منوی مشتری، گزارش مالی و اکسل — همه در یک سیستم آفلاین ." />
+<meta property="og:url" content="https://elexify.ir/cafesync.html" />
+<meta property="og:image" content="https://elexify.ir/image/cafesync/1.png" />
+<meta property="og:locale" content="fa_IR" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="smart serve A1 | سیستم مدیریت هوشمند کافه و رستوران eleXify" />
+<meta name="twitter:description" content="سیستم مدیریت یکپارچه کافه و رستوران با منوی QR، سه پنل کاربری، گزارش مالی و اکسل، کاملاً آفلاین." />
+<meta name="twitter:image" content="https://elexify.ir/image/cafesync/1.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "CafeSync A1",
+  "description": "سیستم مدیریت یکپارچه کافه و رستوران؛ منوی دیجیتال با QR کد، پنل مدیر، پنل پرسنل، منوی مشتری، گزارش مالی با تقویم شمسی و خروجی اکسل، تم قابل سفارشی‌سازی و عملکرد کامل آفلاین .",
+  "brand": {
+    "@type": "Brand",
+    "name": "eleXify"
+  },
+  "manufacturer": {
+    "@type": "Organization",
+    "name": "رهپویان فناوری آمارد"
+  },
+  "image": "https://elexify.ir/image/cafesync/1.png",
+  "url": "https://elexify.ir/cafesync.html",
+  "category": "نرم‌افزار مدیریت کافه و رستوران"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "خانه", "item": "https://elexify.ir/"},
+    {"@type": "ListItem", "position": 2, "name": "محصولات", "item": "https://elexify.ir/#products"},
+    {"@type": "ListItem", "position": 3, "name": "CafeSync A1", "item": "https://elexify.ir/cafesync.html"}
+  ]
+}
+</script>
+
+<style>
+/* ===================================================
+   1) متغیرها و پایه
+   =================================================== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#ffffff;
+  --surface:#f7f8fa;
+  --surface-2:#eff2f6;
+  --text:#0d1117;
+  --muted:#6b7280;
+  --border:#e6e9ee;
+  --accent:#2563eb;
+  --accent-dark:#1d4ed8;
+  --accent-soft:rgba(37,99,235,.08);
+  --radius:18px;
+  --maxw:1180px;
+  --shadow:0 24px 48px -28px rgba(13,17,23,.22);
+}
+
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+
+body{
+  font-family:'Vazirmatn',system-ui,-apple-system,'Segoe UI',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.85;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input,textarea{font-family:inherit;font-size:inherit}
+button{cursor:pointer;border:none;background:none;color:inherit}
+ul{list-style:none}
+
+.container{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+/* ===================================================
+   2) تیترها و دکمه‌ها
+   =================================================== */
+.section{padding:100px 0}
+.section--soft{background:var(--surface)}
+
+.section-head{max-width:660px;margin:0 auto 60px;text-align:center}
+.eyebrow{
+  display:inline-block;font-size:13px;font-weight:600;color:var(--accent);
+  background:var(--accent-soft);padding:6px 16px;border-radius:100px;margin-bottom:18px;
+}
+.section-head h2{
+  font-size:clamp(26px,3.4vw,38px);font-weight:800;line-height:1.5;letter-spacing:-.5px;
+}
+.section-head p{color:var(--muted);margin-top:14px;font-size:15.5px}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  padding:13px 28px;border-radius:100px;font-weight:600;font-size:15px;
+  transition:all .25s ease;white-space:nowrap;
+}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 10px 24px -10px rgba(37,99,235,.7)}
+.btn-primary:hover{background:var(--accent-dark);transform:translateY(-2px)}
+.btn-ghost{border:1px solid var(--border);color:var(--text)}
+.btn-ghost:hover{border-color:var(--text);background:var(--surface)}
+.btn-sm{padding:10px 20px;font-size:14px}
+.btn-block{width:100%}
+
+/* ===================================================
+   3) پلیس‌هولدرها (جای تصاویر)
+   =================================================== */
+.ph{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
+  background:var(--surface);border:1px dashed #d5dae2;border-radius:var(--radius);
+  color:#9aa3af;font-size:13px;font-weight:500;text-align:center;padding:20px;
+  transition:border-color .25s,color .25s,background .25s;
+}
+.ph svg{opacity:.55}
+.ph span{line-height:1.5}
+
+/* ===================================================
+   4) هدر
+   =================================================== */
+.header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(255,255,255,.82);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid transparent;transition:border-color .3s;
+}
+.header.scrolled{border-bottom-color:var(--border)}
+
+.nav{display:flex;align-items:center;justify-content:space-between;height:78px;gap:24px}
+
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18.5px;letter-spacing:-.3px}
+
+.logo-main{display:flex;flex-direction:column;align-items:center;gap:4px}
+.logo-legal{font-size:11px;color:var(--text);font-weight:600;white-space:nowrap}.logo-box{width:190px;height:70px;border-radius:12px;background:var(--accent);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.15;box-shadow:0 10px 24px -14px rgba(37,99,235,.75)}
+.logo-box strong{font-size:30px;font-weight:800;letter-spacing:1px;direction:ltr}
+.logo-box small{font-size:10px;font-weight:500;margin-top:3px;white-space:nowrap}
+
+.logo-mark{
+  width:16px;height:16px;border-radius:16px;background:var(--accent);
+  display:grid;place-items:center;color:#fff;flex-shrink:0;
+}
+
+.nav-links{display:flex;gap:34px;font-size:15px;font-weight:500}
+.nav-links a{color:var(--muted);transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+
+.nav-actions{display:flex;align-items:center;gap:12px}
+
+.nav-toggle{
+  display:none;width:42px;height:42px;border-radius:12px;border:1px solid var(--border);
+  flex-direction:column;align-items:center;justify-content:center;gap:5px;transition:.2s;
+}
+.nav-toggle span{display:block;width:18px;height:2px;background:var(--text);border-radius:2px;transition:.28s}
+.nav-toggle.active span:nth-child(1){transform:translateY(3.5px) rotate(45deg)}
+.nav-toggle.active span:nth-child(2){transform:translateY(-3.5px) rotate(-45deg)}
+
+.mobile-menu{
+  position:absolute;top:100%;inset-inline:0;
+  background:#fff;border-bottom:1px solid var(--border);
+  padding:14px 24px 26px;display:none;flex-direction:column;gap:2px;
+  box-shadow:0 20px 40px -24px rgba(13,17,23,.25);
+}
+.mobile-menu.open{display:flex}
+.mobile-menu a{padding:12px 0;font-weight:500;color:var(--muted);border-bottom:1px solid var(--border)}
+.mobile-menu a:last-of-type{border-bottom:none}
+.mobile-menu .btn{margin-top:14px}
+
+/* ===================================================
+   5) فوتر
+   =================================================== */
+.footer{background:#0d1117;color:#8b95a3;padding:76px 0 0;font-size:14.5px}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:48px;padding-bottom:60px}
+.footer .logo{color:#fff;margin-bottom:18px}
+.footer .logo-mark{background:var(--accent)}
+.footer-about{font-size:14px;line-height:1.9;max-width:320px}
+.footer h4{color:#fff;font-size:15px;font-weight:700;margin-bottom:20px}
+.footer-links{display:flex;flex-direction:column;gap:12px}
+.footer-links a{transition:color .2s;font-size:14px}
+.footer-links a:hover{color:#fff}
+
+.socials{display:flex;gap:10px;margin-top:22px}
+.socials a{
+  width:38px;height:38px;border-radius:11px;background:rgba(255,255,255,.06);
+  display:grid;place-items:center;color:#8b95a3;transition:.25s;
+}
+.socials a:hover{background:var(--accent);color:#fff;transform:translateY(-2px)}
+
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.08);padding:26px 0;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  font-size:13.5px;
+}
+
+/* ===================================================
+   6) انیمیشن ظاهر شدن
+   =================================================== */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+
+/* ===================================================
+   7) صفحه جزئیات محصول
+   =================================================== */
+.product-view{display:none}
+.product-view.active{display:block;animation:fadeUp .5s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+.breadcrumb{
+  display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--muted);
+  padding:30px 0 6px;flex-wrap:wrap;
+}
+.breadcrumb a{color:var(--accent);transition:color .2s}
+.breadcrumb a:hover{color:var(--accent-dark)}
+.breadcrumb .sep{color:#c2c8d2}
+.breadcrumb .current{color:var(--text);font-weight:600}
+
+.detail-hero{
+  display:grid;grid-template-columns:1.05fr 1fr;gap:56px;
+  padding:28px 0 76px;align-items:start;
+}
+
+.detail-gallery{position:relative}
+.gallery-main{aspect-ratio:4/3;width:100%;border-radius:22px}
+.gallery-thumbs{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px;
+}
+.gallery-thumbs .ph{aspect-ratio:1;border-radius:14px;padding:8px;font-size:11px;cursor:pointer;transition:.25s}
+.gallery-thumbs .ph:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.gallery-thumbs .ph svg{width:20px;height:20px}
+
+.detail-info .product-tag{margin-bottom:16px}
+.detail-info h1{
+  font-size:clamp(24px,3.2vw,36px);font-weight:800;line-height:1.4;
+  letter-spacing:-.5px;margin-bottom:16px;
+}
+.detail-info .lead{color:var(--muted);font-size:16px;margin-bottom:28px}
+
+.detail-meta{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
+  padding:22px 0;border-block:1px solid var(--border);margin-bottom:28px;
+}
+.detail-meta span{display:block;font-size:12.5px;color:var(--muted);margin-bottom:4px}
+.detail-meta strong{font-size:15px;font-weight:700}
+
+.detail-actions{display:flex;gap:12px;flex-wrap:wrap}
+
+/* بخش‌های محتوای جزئیات */
+.detail-sections{padding:8px 0 40px}
+.detail-block{margin-bottom:64px}
+.detail-block h2{
+  font-size:clamp(19px,2.3vw,24px);font-weight:800;letter-spacing:-.3px;
+  margin-bottom:22px;display:flex;align-items:center;gap:12px;
+}
+.detail-block h2::before{
+  content:'';width:5px;height:22px;border-radius:3px;background:var(--accent);flex-shrink:0;
+}
+.detail-block p{color:#3f4652;font-size:15.5px;margin-bottom:14px}
+.detail-block p:last-child{margin-bottom:0}
+
+.detail-two-col{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+
+.specs-table{
+  width:100%;border-collapse:collapse;border:1px solid var(--border);
+  border-radius:16px;overflow:hidden;font-size:14.5px;
+}
+.specs-table tr:nth-child(odd){background:var(--surface)}
+.specs-table th,.specs-table td{
+  padding:14px 20px;text-align:right;border-bottom:1px solid var(--border);
+}
+.specs-table tr:last-child th,.specs-table tr:last-child td{border-bottom:none}
+.specs-table th{font-weight:600;color:var(--muted);width:42%}
+.specs-table td{color:var(--text);font-weight:500}
+
+.feature-list{display:grid;grid-template-columns:1fr;gap:12px}
+.feature-list li{
+  display:flex;gap:12px;align-items:flex-start;font-size:14.5px;font-weight:500;
+  background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px 18px;
+  transition:.25s;
+}
+.feature-list li:hover{border-color:#dbe0e7;box-shadow:0 12px 24px -18px rgba(13,17,23,.25)}
+.feature-list svg{color:var(--accent);flex-shrink:0;margin-top:5px}
+
+.more-images{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.more-images .ph{aspect-ratio:4/3}
+
+.detail-cta{
+  background:var(--surface);border:1px solid var(--border);border-radius:24px;
+  padding:44px 40px;text-align:center;margin-top:20px;
+}
+.detail-cta h3{font-size:20px;font-weight:800;margin-bottom:10px;letter-spacing:-.3px}
+.detail-cta p{color:var(--muted);font-size:15px;margin-bottom:26px}
+
+/* ===================================================
+   8) کارت‌های پنل (بخش سه پنل یکپارچه)
+   =================================================== */
+.panels-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.panel-card{
+  background:#fff;border:1px solid var(--border);border-radius:20px;padding:30px 26px;
+  transition:all .3s ease;display:flex;flex-direction:column;gap:14px;
+}
+.panel-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:#dbe0e7}
+.panel-icon{
+  width:48px;height:48px;border-radius:14px;background:var(--accent-soft);
+  color:var(--accent);display:grid;place-items:center;
+}
+.panel-card h3{font-size:16.5px;font-weight:700}
+.panel-card p{color:var(--muted);font-size:14px;line-height:1.85}
+.panel-card ul{display:flex;flex-direction:column;gap:6px;margin-top:6px;padding-top:14px;border-top:1px solid var(--border)}
+.panel-card ul li{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:7px}
+.panel-card ul li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0}
+
+/* ===================================================
+   9) ریسپانسیو
+   =================================================== */
+@media (max-width:1024px){
+  .detail-hero{gap:40px}
+  .panels-grid{grid-template-columns:1fr}
+}
+
+@media (max-width:980px){
+  .footer-grid{grid-template-columns:1fr 1fr;gap:40px}
+  .detail-two-col{grid-template-columns:1fr;gap:40px}
+  .more-images{grid-template-columns:repeat(2,1fr)}
+}
+
+@media (max-width:900px){
+  .nav-links,.nav-actions .btn{display:none}
+  .nav-toggle{display:flex}
+  .detail-hero{grid-template-columns:1fr;gap:36px}
+  .detail-cta{padding:36px 24px}
+}
+
+@media (max-width:680px){
+  .container{padding:0 18px}
+  .footer-grid{grid-template-columns:1fr}
+  .gallery-thumbs{grid-template-columns:repeat(4,1fr);gap:10px}
+  .detail-meta{grid-template-columns:1fr 1fr;gap:14px}
+  .more-images{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header class="header" id="header">
+  <div class="container">
+    <nav class="nav">
+      <a href="index.html" class="logo logo-main" aria-label="elexify - رهپویان فناوری آمارد">
+        <span class="logo-box">
+          <strong>elexify</strong>
+          <small>رهپویان فناوری آمارد</small>
+        </span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html#products">محصولات</a></li>
+        <li><a href="index.html#features">مزایا</a></li>
+        <li><a href="index.html#about">درباره ما</a></li>
+        <li><a href="index.html#testimonials">نظرات</a></li>
+        <li><a href="index.html#contact">تماس</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="index.html#contact" class="btn btn-primary btn-sm">مشاوره رایگان</a>
+        <button class="nav-toggle" id="navToggle" aria-label="باز و بسته کردن منو">
+          <span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html#products">محصولات</a>
+    <a href="index.html#features">مزایا</a>
+    <a href="index.html#about">درباره ما</a>
+    <a href="index.html#testimonials">نظرات</a>
+    <a href="index.html#contact">تماس</a>
+    <a href="index.html#contact" class="btn btn-primary">مشاوره رایگان</a>
+  </div>
+</header>
+
+<main>
+<section class="product-view active" id="product-1">
+    <div class="container">
+
+      <!-- مسیر راهنما -->
+      <nav class="breadcrumb" aria-label="مسیر راهنما">
+        <a href="index.html">خانه</a>
+        <span class="sep">/</span>
+        <a href="index.html#products">محصولات</a>
+        <span class="sep">/</span>
+        <span class="current">CafeSync A1</span>
+      </nav>
+
+      <!-- بخش هیرو جزئیات -->
+      <div class="detail-hero">
+        <div class="detail-gallery">
+          <div class="ph gallery-main" id="galleryMain">
+            <svg width="88" height="88" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="9" rx="1.5"/>
+              <rect x="14" y="3" width="7" height="5" rx="1.5"/>
+              <rect x="14" y="12" width="7" height="9" rx="1.5"/>
+              <rect x="3" y="16" width="7" height="5" rx="1.5"/>
+            </svg>
+            <span id="galleryMainLabel">داشبورد مدیر</span>
+          </div>
+          <div class="gallery-thumbs">
+            <div class="ph active" data-icon="dashboard" data-label="داشبورد مدیر">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="9" rx="1.5"/>
+                <rect x="14" y="3" width="7" height="5" rx="1.5"/>
+                <rect x="14" y="12" width="7" height="9" rx="1.5"/>
+                <rect x="3" y="16" width="7" height="5" rx="1.5"/>
+              </svg>
+              <span>داشبورد</span>
+            </div>
+            <div class="ph" data-icon="menu" data-label="منوی مشتری">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <path d="M14 2v6h6M8 13h8M8 17h8M8 9h2"/>
+              </svg>
+              <span>منوی مشتری</span>
+            </div>
+            <div class="ph" data-icon="staff" data-label="پنل پرسنل">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+              <span>پنل پرسنل</span>
+            </div>
+            <div class="ph" data-icon="report" data-label="گزارش مالی">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 20V10M12 20V4M6 20v-6"/>
+              </svg>
+              <span>گزارش مالی</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-info">
+          <span class="product-tag">سیستم مدیریت یکپارچه کافه و رستوران</span>
+          <h1>CafeSync A1</h1>
+          <p class="lead">
+            سیستم مدیریت کافه و رستوران با منوی دیجیتال QR، سبد خرید و ثبت سفارش 
+            سه پنل کاربری مجزا (مدیر، پرسنل، مشتری)، مدیریت زنده سفارش‌ها و فراخوان گارسون،
+            گزارش‌های مالی با تقویم شمسی و خروجی اکسل — همه به صورت کاملاً آفلاین روی رزبری‌پای.
+          </p>
+
+          <div class="detail-meta">
+            <div><span>نوع</span><strong>نرم‌افزار مدیریتی</strong></div>
+            <div><span>پلتفرم</span><strong>تحت وب</strong></div>
+            <div><span>اینترنت</span><strong>کاملا آفلاین</strong></div>
+          </div>
+
+          <div class="detail-actions">
+            <a href="index.html#contact" class="btn btn-primary">درخواست دمو</a>
+            <a href="index.html#products" class="btn btn-ghost">بازگشت به محصولات</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- بخش‌های محتوا -->
+      <div class="detail-sections">
+
+        <!-- توضیحات کامل -->
+        <div class="detail-block">
+          <h2>توضیحات کامل محصول</h2>
+          <p>
+            smart serve A1 یک سیستم مدیریت یکپارچه و کاملاً فارسی برای کافه‌ها و رستوران‌ها است
+            که روی یک دستگاه کوچک اجرا می‌شود. کل سیستم به صورت آفلاین کار می‌کند و
+            به اینترنت نیاز ندارد؛ داده‌ها روی فلش USB ذخیره می‌شوند و از نظر امنیت، حریم خصوصی
+            و پایداری، انتخاب مطمئنی برای کسب‌وکار شماست.
+          </p>
+          <p>
+            مشتری با اسکن QR کد اختصاصی هر میز، منوی دیجیتال کافه را روی گوشی خود باز می‌کند،
+            آیتم‌ها را با تصاویر و توضیحات می‌بیند، به سبد خرید اضافه می‌کند و سفارش را ثبت می‌کند.
+            نیازی به نصب هیچ اپلیکیشنی نیست و همه چیز در مرورگر انجام می‌شود. وضعیت سفارش
+            به صورت زنده (جدید، در حال آماده‌سازی، آماده، تحویل شده) قابل پیگیری است.
+          </p>
+          <p>
+            پرسنل با ورود به پنل اختصاصی خود، سفارش‌های جدید را به صورت زنده دریافت می‌کنند،
+            آن‌ها را می‌پذیرند و وضعیت را تغییر می‌دهند. سیستم به گونه‌ای طراحی شده که هر
+            سفارش فقط به یک گارسون اختصاص یابد تا از سردرگمی و دوباره‌کاری جلوگیری شود.
+            همچنین مشتری می‌تواند با یک دکمه، گارسون را فراخوانی کند؛ سیستم این درخواست را با
+            محدودیت زمانی مدیریت می‌کند تا از ارسال درخواست‌های تکراری جلوگیری شود.
+          </p>
+          <p>
+            مدیر کافه با پنل مدیریت جامع، منو، دسته‌بندی‌ها، میزها، پرسنل، مالیات، هزینه سرویس
+            و حتی تم ظاهری سایت را مدیریت می‌کند. داشبورد مدیریت، فروش امروز، فروش هفته و
+            پرفروش‌ترین آیتم‌ها را نشان می‌دهد و گزارش‌های مالی دقیق با تقویم شمسی، فیلترهای
+            پیشرفته و خروجی اکسل (چند شیت) در اختیار مدیر قرار می‌گیرد.
+          </p>
+        </div>
+
+        <!-- سه پنل یکپارچه -->
+        <div class="detail-block">
+          <h2>سه پنل، یک سیستم یکپارچه</h2>
+          <div class="panels-grid">
+            <div class="panel-card">
+              <div class="panel-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="7" height="9" rx="1.5"/>
+                  <rect x="14" y="3" width="7" height="5" rx="1.5"/>
+                  <rect x="14" y="12" width="7" height="9" rx="1.5"/>
+                  <rect x="3" y="16" width="7" height="5" rx="1.5"/>
+                </svg>
+              </div>
+              <h3>پنل مدیریت</h3>
+              <p>کنترل کامل بر منو، میزها، پرسنل، تنظیمات مالی و ظاهر سایت؛ همراه با داشبورد و گزارش‌های تحلیلی.</p>
+              <ul>
+                <li>مدیریت آیتم‌ها و دسته‌بندی‌ها</li>
+                <li>آپلود چند تصویر برای هر آیتم منو</li>
+                <li>گزارش مالی با تقویم شمسی</li>
+                <li>خروجی اکسل چند شیت</li>
+              </ul>
+            </div>
+
+            <div class="panel-card">
+              <div class="panel-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                  <circle cx="12" cy="7" r="4"/>
+                </svg>
+              </div>
+              <h3>پنل پرسنل</h3>
+              <p>دریافت زنده سفارش‌ها، مدیریت وضعیت، پاسخ به فراخوان گارسون و مشاهده جزئیات هر سفارش.</p>
+              <ul>
+                <li>اعلان صوتی سفارش جدید</li>
+                <li>اختصاص سفارش به گارسون</li>
+                <li>مدیریت فراخوان گارسون</li>
+                <li>فیلتر بر اساس وضعیت</li>
+              </ul>
+            </div>
+
+            <div class="panel-card">
+              <div class="panel-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="7" height="7"/>
+                  <rect x="14" y="3" width="7" height="7"/>
+                  <rect x="3" y="14" width="7" height="7"/>
+                  <path d="M14 14h3v3h-3zM20 14v.01M14 20v.01M20 20v.01"/>
+                </svg>
+              </div>
+              <h3>منوی مشتری</h3>
+              <p>منوی دیجیتال با QR کد اختصاصی هر میز، سبد خرید، ثبت سفارش و پیگیری زنده وضعیت.</p>
+              <ul>
+                <li>بدون نیاز به نصب اپلیکیشن</li>
+                <li>گالری چند تصویری هر آیتم</li>
+                <li>یادداشت روی هر سفارش برای گارسون</li>
+                <li>فراخوان گارسون با یک لمس</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- مشخصات فنی + ویژگی‌ها -->
+        <div class="detail-two-col">
+
+          <div class="detail-block" style="margin-bottom:0">
+            <h2>مشخصات فنی</h2>
+            <table class="specs-table">
+              <tr><th>ذخیره‌سازی داده</th><td>فلش USB  </td></tr>
+              <tr><th>اتصال شبکه</th><td>Wi-Fi Hotspot داخلی</td></tr>
+              <tr><th>رابط کاربری</th><td>وب فارسی </td></tr>
+              <tr><th>پنل‌های کاربری</th><td>مدیر، پرسنل، مشتری</td></tr>
+              <tr><th>نمایشگر</th><td>LED نشانگر وضعیت</td></tr>
+              <tr><th>ورودی</th><td>دکمه خاموشی امن (نگه‌داشتن ۵ ثانیه)</td></tr>
+              <tr><th>برق مصرفی</th><td>آداپتور ۵ ولت USB-C</td></tr>
+              <tr><th>عملکرد</th><td>کاملاً آفلاین (بدون اینترنت)</td></tr>
+              <tr><th>بروزرسانی</th><td>از طریق اتصال موقت به Wi-Fi خارجی</td></tr>
+            </table>
+          </div>
+
+          <div class="detail-block" style="margin-bottom:0">
+            <h2>ویژگی‌های کلیدی</h2>
+            <ul class="feature-list">
+              <li>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                QR کد اختصاصی برای هر میز
+              </li>
+              <li>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                منوی دیجیتال با چند تصویر برای هر آیتم
+              </li>
+              <li>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                سبد خرید و ثبت سفارش آسان
+              </li>
+              <li>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                پیگیری زنده وضعیت سفارش
+              </li>
+              <li>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                فراخوان گارسون  
+              </li>
+              <li>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                تنظیم مالیات و هزینه سرویس
+              </li>
+              <li>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                گزارش مالی با تقویم شمسی و خروجی اکسل
+              </li>
+              <li>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                تم قابل سفارشی‌سازی (رنگ، فونت، لوگو)
+              </li>
+              <li>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                عملکرد کامل آفلاین و امن
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- تصاویر بیشتر -->
+        <div class="detail-block" style="margin-top:64px">
+          <h2>نمای پنل‌ها</h2>
+          <div class="more-images">
+            <div class="ph">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="9" rx="1.5"/>
+                <rect x="14" y="3" width="7" height="5" rx="1.5"/>
+                <rect x="14" y="12" width="7" height="9" rx="1.5"/>
+                <rect x="3" y="16" width="7" height="5" rx="1.5"/>
+              </svg>
+              <span>داشبورد مدیریت</span>
+            </div>
+            <div class="ph">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <path d="M14 2v6h6M8 13h8M8 17h8M8 9h2"/>
+              </svg>
+              <span>منوی مشتری</span>
+            </div>
+            <div class="ph">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 20V10M12 20V4M6 20v-6"/>
+              </svg>
+              <span>گزارش مالی و اکسل</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA پایین -->
+        <div class="detail-cta">
+          <h3>می‌خواهید smart serve را در کافه خود ببینید؟</h3>
+          <p>کارشناسان ما آماده‌ی مشاوره، دمو زنده و راه‌اندازی سیستم روی رزبری‌پای هستند.</p>
+          <a href="index.html#contact" class="btn btn-primary">درخواست مشاوره رایگان</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="logo">
+          <span class="logo-mark"></span>
+          رهپویان فناوری آمارد
+        </a>
+        <p class="footer-about">
+          طراحی، تولید و توسعه دستگاه‌های الکترونیکی و سیستم‌های نرم‌افزاری صنعتی
+          با تمرکز بر کیفیت، دقت و پشتیبانی فنی
+        </p>
+        <div class="socials">
+          <a href="https://www.instagram.com/elexify.co" target="_blank" rel="noopener noreferrer" aria-label="اینستاگرام">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/in/elexify" target="_blank" rel="noopener noreferrer" aria-label="لینکدین">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="4"/>
+              <path d="M8 10.5V17M8 7.2v.01M12 17v-3.6a2.2 2.2 0 014.4 0V17"/>
+            </svg>
+          </a>
+          <a href="https://www.elexify.ir" target="_blank" rel="noopener noreferrer" aria-label="وب‌سایت">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M3 12h18M12 3c3 3.5 3 14.5 0 18-3-3.5-3-14.5 0-18z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4>دسترسی سریع</h4>
+        <ul class="footer-links">
+          <li><a href="index.html#products">محصولات</a></li>
+          <li><a href="index.html#features">مزایا</a></li>
+          <li><a href="index.html#about">درباره ما</a></li>
+          <li><a href="index.html#contact">تماس با ما</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>خدمات CafeSync</h4>
+        <ul class="footer-links">
+          <li><a href="#">مشاوره فنی</a></li>
+          <li><a href="#">نصب و راه‌اندازی</a></li>
+          <li><a href="#">آموزش پرسنل</a></li>
+          <li><a href="#">پشتیبانی محصول</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>اطلاعات تماس</h4>
+        <ul class="footer-links">
+          <li>تلفن: 09114158463</li>
+          <li>ایمیل: elexify.co@gmail.com</li>
+          <li>مازندران، آمل، خ امام رضا(ع)، مرکز رشد و فناوری آمل</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© ۱۴۰۵ رهپویان فناوری آمارد — تمامی حقوق محفوظ است.</span>
+      <span>powered by eleXify</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   هدر: افزودن کلاس هنگام اسکرول
+   ============================================================ */
+const header = document.getElementById('header');
+const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 10);
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+/* ============================================================
+   منوی موبایل
+   ============================================================ */
+const navToggle = document.getElementById('navToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+
+navToggle.addEventListener('click', () => {
+  navToggle.classList.toggle('active');
+  mobileMenu.classList.toggle('open');
+});
+
+mobileMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navToggle.classList.remove('active');
+    mobileMenu.classList.remove('open');
+  });
+});
+
+/* ============================================================
+   انیمیشن ظاهر شدن عناصر
+   ============================================================ */
+const reveals = document.querySelectorAll('.reveal');
+
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 70);
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+  reveals.forEach(el => io.observe(el));
+} else {
+  reveals.forEach(el => el.classList.add('visible'));
+}
+
+/* ============================================================
+   گالری جزئیات محصول:
+   چون فعلاً از placeholder استفاده می‌کنیم، فقط آیکون و برچسب
+   اصلی بر اساس thumbnail کلیک‌شده عوض می‌شود. اگر بعداً تصاویر
+   واقعی اضافه کردید، کافی است منطق img را در همین بلوک جایگزین کنید.
+   ============================================================ */
+const GALLERY_ICONS = {
+  dashboard: '<svg width="88" height="88" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>',
+  menu:      '<svg width="88" height="88" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8M8 9h2"/></svg>',
+  staff:     '<svg width="88" height="88" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
+  report:    '<svg width="88" height="88" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>'
+};
+
+document.querySelectorAll('.detail-gallery').forEach(gallery => {
+  const main = gallery.querySelector('.gallery-main');
+  const label = gallery.querySelector('#galleryMainLabel');
+  const thumbItems = gallery.querySelectorAll('.gallery-thumbs .ph');
+  if (!main || !thumbItems.length) return;
+
+  thumbItems.forEach(item => {
+    item.addEventListener('click', () => {
+      thumbItems.forEach(t => t.classList.remove('active'));
+      item.classList.add('active');
+
+      const iconKey = item.dataset.icon;
+      const labelText = item.dataset.label || '';
+      if (iconKey && GALLERY_ICONS[iconKey]) {
+        const oldLabel = label ? label.textContent : '';
+        main.innerHTML = GALLERY_ICONS[iconKey] + '<span id="galleryMainLabel">' + (labelText || oldLabel) + '</span>';
+        main.classList.remove('fade-in');
+        void main.offsetWidth;
+        main.classList.add('fade-in');
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
